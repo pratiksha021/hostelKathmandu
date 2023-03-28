@@ -1,11 +1,11 @@
-{% extends 'ecom/customer_base.html' %}
+{% extends 'ecom/homebase.html' %}
 {% load static %}
 {% block content %}
 
 
 <style media="screen">
   body {
-    background-color:#8c9eff;
+    background-color:#7e5654;
   }
   .button {
   display: inline-block;
@@ -53,7 +53,7 @@
 <div style="padding-left:300px;" class="container">
 
         <div class="col-sm-2 col-md-2">
-            <img src="{% static customer.profile_pic.url %}"   alt="profile pic" class="img-rounded img-responsive" />
+            <img src="{% static customer.profile_pic.url %}"   alt="profile pic" class="img-rounded img-responsive" width="200px" height="200px" />
         </div>
         <div class="col-sm-4 col-md-4">
             <blockquote>
@@ -69,11 +69,7 @@
   <a href="/edit-profile"><button class="button" ><span>Edit Profile </span></button></a>
 </div>
 <br><br><br><br><br><br>
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+
 
 
 

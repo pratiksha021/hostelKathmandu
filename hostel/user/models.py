@@ -15,29 +15,47 @@ class Customer(models.Model):
     def __str__(self):
         return self.user.first_name
 
+class HostelOwner(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=20)
 
-class Product(models.Model):
-    name=models.CharField(max_length=40)
-    product_image= models.ImageField(upload_to='product_image/',null=True,blank=True)
-    price = models.PositiveIntegerField()
-    description=models.CharField(max_length=40)
+class Hostel(models.Model):
+   
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=200)
+    hostel_image= models.ImageField(upload_to='product_image/',null=True,blank=True)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    capacity = models.PositiveIntegerField()
+    rating = models.FloatField()
+    has_wifi = models.BooleanField(default=False)
+    has_kitchen = models.BooleanField(default=False)
+    has_lounge = models.BooleanField(default=False)
+    has_parking = models.BooleanField(default=False)
+    # owner = models.ForeignKey(HostelOwner, on_delete=models.CASCADE)
+
+
     def __str__(self):
         return self.name
 
 
-class Orders(models.Model):
+
+
+
+class Booking(models.Model):
     STATUS =(
         ('Pending','Pending'),
-        ('Order Confirmed','Order Confirmed'),
-        ('Out for Delivery','Out for Delivery'),
-        ('Delivered','Delivered'),
+        ('Booking Confirmed','Booking Confirmed'),
+        ('Out for Use','Out for Use'),
+        ('Used','Used'),
     )
     customer=models.ForeignKey('Customer', on_delete=models.CASCADE,null=True)
-    product=models.ForeignKey('Product',on_delete=models.CASCADE,null=True)
+    hostel =models.ForeignKey('Hostel',on_delete=models.CASCADE,null=True)
     email = models.CharField(max_length=50,null=True)
     address = models.CharField(max_length=500,null=True)
     mobile = models.CharField(max_length=20,null=True)
-    order_date= models.DateField(auto_now_add=True,null=True)
+    booking_date= models.DateField(auto_now_add=True,null=True)
     status=models.CharField(max_length=50,null=True,choices=STATUS)
 
 

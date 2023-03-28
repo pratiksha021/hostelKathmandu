@@ -1,0 +1,102 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+
+    .float {
+      position: fixed;
+      width: 70px;
+      height: 70px;
+      bottom: 60px;
+      right: 60px;
+      background-color: red;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      box-shadow: 3px 3px 3px #999;
+    }
+
+    .my-float {
+      margin-top: 22px;
+    }
+  </style>
+</head>
+
+
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Total Hostel List</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Capacity</th>
+          <th>rating</th>
+          <th>wifi</th>
+          <th>kitchen</th>
+          <th>Lounge</th>
+          <th>Parking</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {% for h in Hostels %}
+      {% if h %}
+
+      <tr>
+        <td> {{h.name}}</td>
+        <td>{{h.address}}</td>
+        <td> <img src="{% static h.hostel_image.url %}" alt="hostel Pic" height="40px" width="40px" /></td>
+        <td>{{h.description}}</td>
+        <td>{{h.price}}</td>
+        <td>{{h.capacity}}</td>
+        <td>{{h.rating}}</td>
+        <td>{% if h.has_wifi %}Yes{% else %}No{% endif %}</td>
+        <td>{% if h.has_kitchen %}Yes{% else %}No{% endif %}</td>
+        <td>{% if h.has_lounge %}Yes{% else %}No{% endif %}</td>
+        <td>{% if h.has_parking %}Yes{% else %}No{% endif %}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'update-hostel' h.id  %}"><span
+              class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-hostel' h.id  %}"><span
+              class="glyphicon glyphicon-trash"></span></a></td>
+
+      </tr>
+      {%else%}
+      <br><br><br>
+      <h1>no hostels</h1>
+      {% endif %}
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<!-- add hostel floating button -->
+<a href="/admin-add-hostel" class="float">
+  <i class="fa fa-plus my-float"></i>
+</a>
+
+{% endblock content %}

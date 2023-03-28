@@ -16,10 +16,10 @@ class CustomerForm(forms.ModelForm):
         model=models.Customer
         fields=['address','mobile','profile_pic']
 
-class ProductForm(forms.ModelForm):
+class HostelForm(forms.ModelForm):
     class Meta:
-        model=models.Product
-        fields=['name','price','description','product_image']
+        model=models.Hostel
+        fields=['name','address','hostel_image','description','price','capacity','rating','has_wifi','has_kitchen','has_lounge','has_parking']
 
 #address of shipment
 class AddressForm(forms.Form):
@@ -33,9 +33,9 @@ class FeedbackForm(forms.ModelForm):
         fields=['name','feedback']
 
 #for updating status of order
-class OrderForm(forms.ModelForm):
+class BookingForm(forms.ModelForm):
     class Meta:
-        model=models.Orders
+        model=models.Booking
         fields=['status']
 
 #for contact us page

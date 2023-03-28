@@ -1,17 +1,72 @@
-{% extends 'ecom/homebase.html' %}
+
 {% load static %}
 {% block content %}
-<br><br><br>
-<img src="{% static "images/logout_img.png" %}"  style="width:800px; height:100px; padding-left:400px;">
+<br><br><br><br><br><br>
+<!-- <img src="{% static "images/logout_img.png" %}"  style="width:800px; height:100px; padding-left:400px;s"> -->
 
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br>
 
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <title>Logout Successful</title>
+
+    <style>
+        body{
+            background-color: #ffffff;
+        }
+        .container {
+            padding: 30px;
+            padding-top: 5px;
+            margin: 0 auto;
+            max-width: 500px;
+            text-align: center;
+            background-color: #553e3e;
+            border-radius: 20px;
+            
+            
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        p {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        a {
+            display: block;
+            margin-top: 30px;
+            color: #4CAF50;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Logout Successful</h1>
+        <p>You have been successfully logged out.</p>
+        <div style="margin-bottom: 0px;">
+            <a href="/customerlogin">Click here to log in again.</a>
+        <h3>Or</h3>
+        <a href="/">Go to homePage</a>
+        </div>
+        
+
+    </div>
+</body>
+
+</html>
+
 
 {% endblock content %}

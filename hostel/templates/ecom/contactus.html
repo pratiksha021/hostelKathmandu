@@ -5,12 +5,12 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>LazyCoder || sumit</title>
+  <title>Hostel Kathmandu</title>
 
 
 </head>
 
-<body style="background-color: #B3E5FC;">
+<body style="background-color: #7e5654">
 
   {%if request.user.is_authenticated%}
     {% include "ecom/customer_navbar.html" %}
@@ -19,7 +19,7 @@
   {%endif%}
 
   <center>
-    <h3 class='alert alert-success'>Send Us Your Valuable Feedback !</h3>
+    <h3 style="height: 80px; margin-top: 45px;">Send Us Your Valuable Feedback !</h3>
 
     <form method="POST">
       <!-- Very Important csrf Token -->
@@ -29,16 +29,13 @@
         <h3>{{ form.as_p }}</h3>
         </p>
         <br>
-        <input type="submit" value="Send Message" class='btn btn-primary btn-lg'>
+        <input type="submit" value="Send Message" class="book-a-table-btn scrollto" style="background-color: #ffb03b;">
+        <br><br>
       </div>
     </form>
   </center>
   {% include "ecom/footer.html" %}
 </body>
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+
 
 </html>

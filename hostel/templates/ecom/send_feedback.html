@@ -6,7 +6,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>LazyCoder || sumit</title>
+  <title>Hostel Kathmandu</title>
 <style media="screen">
   .form-style-1 {
   	margin:10px auto;
@@ -83,7 +83,7 @@
   	color: #fff;
   }
   .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-  	background: #4691A4;
+  	background: #7e5654;
   	box-shadow:none;
   	-moz-box-shadow:none;
   	-webkit-box-shadow:none;
@@ -95,7 +95,7 @@
 
 </head>
 
-<body style="background-color: #B3E5FC;">
+<body style="background-color: #7e5654;">
 
   {%if request.user.is_authenticated%}
     {% include "ecom/customer_navbar.html" %}
@@ -104,7 +104,7 @@
   {%endif%}
 
   <center>
-    <h3 class='alert alert-success'>Send Us Your Valuable Feedback !</h3>
+    <h3 style="height: 50px; margin-top: 45px;">Send Us Your Valuable Feedback !</h3>
 
 
     <form method="post">
@@ -122,7 +122,7 @@
 
         </li>
         <li>
-            <input type="submit" value="Send Feedback" />
+            <input  class="book-a-table-btn scrollto" style="background-color: #ffb03b;" type="submit" value="Send Feedback" />
         </li>
     </ul>
     </form>

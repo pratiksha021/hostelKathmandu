@@ -29,23 +29,24 @@ facebook : fb.com/sumit.luv
 <div class="container">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h6 class="panel-title">Total Orders</h6>
+      <h6 class="panel-title">Total Bookings</h6>
     </div>
     <table class="table table-hover" id="dev-table">
       <thead>
         <tr>
           <th>Customer Name</th>
           <th>Customer Mobile</th>
-          <th>Shipment Address</th>
-          <th>Product Name</th>
-          <th>Product Picture</th>
+          <th>Customer Address</th>
+          <th>Hostel Name</th>
+          <th>Hostel Picture</th>
+          <th>Hostel Address</th>
           <th>Status</th>
           <th>Update Status</th>
           <th>Delete</th>
         </tr>
       </thead>
       <!-- p for product, c for customer-->
-      {% for product,customer,order in data %}
+      {% for Hostels,customer,booking in data %}
       <tr>
         {% for c in customer %}
         <td> {{c.get_name}}</td>
@@ -53,12 +54,12 @@ facebook : fb.com/sumit.luv
         <td>{{order.address}}</td>
 
         {% endfor %}
-        {% for p in product %}
-        <td> {{p.name}}</td>
-        <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
-        <td>{{order.status}}</td>
-        <td><a class="btn btn-primary btn-xs" href="{% url 'update-order' order.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
-        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-order' order.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+        {% for h in Hostels %}
+        <td> {{h.name}}</td>
+        <td> <img src="{% static h.hostel_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{booking.status}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'update-booking' booking.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'delete-booking' booking.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
 
         {% endfor %}
 

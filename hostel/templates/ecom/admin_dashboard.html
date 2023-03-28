@@ -24,7 +24,7 @@
 
           </tr>
         </thead>
-        {% for product,customer,order in data %}
+        {% for hostel,customer,order in data %}
         <tr>
           {% for c in customer %}
           <td> {{c.get_name}}</td>
@@ -32,8 +32,8 @@
           <td>{{order.address}}</td>
 
           {% endfor %}
-          {% for p in product %}
-          <td> {{p.name}}</td>
+          {% for h in hostel %}
+          <td> {{h.name}}</td>
           <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
 
           {% if order.status == 'Pending'%}

@@ -36,23 +36,23 @@ urlpatterns = [
     path('delete-customer/<int:pk>', views.delete_customer_view,name='delete-customer'),
     path('update-customer/<int:pk>', views.update_customer_view,name='update-customer'),
 
-    path('admin-products', views.admin_products_view,name='admin-products'),
-    path('admin-add-product', views.admin_add_product_view,name='admin-add-product'),
-    path('delete-product/<int:pk>', views.delete_product_view,name='delete-product'),
-    path('update-product/<int:pk>', views.update_product_view,name='update-product'),
+    path('admin-hostels', views.admin_Hostels_view,name='admin-hostels'),
+    path('admin-add-hostel', views.admin_add_Hostel_view,name='admin-add-hostel'),
+    path('delete-hostel/<int:pk>', views.delete_Hostel_view,name='delete-hostel'),
+    path('update-hostel/<int:pk>', views.update_Hostel_view,name='update-hostel'),
 
     path('admin-view-booking', views.admin_view_booking_view,name='admin-view-booking'),
-    path('delete-order/<int:pk>', views.delete_order_view,name='delete-order'),
-    path('update-order/<int:pk>', views.update_order_view,name='update-order'),
+    path('delete-order/<int:pk>', views.delete_booking_view,name='delete-order'),
+    path('update-order/<int:pk>', views.update_booking_view,name='update-order'),
 
 
     path('customersignup', views.customer_signup_view),
     path('customerlogin', LoginView.as_view(template_name='ecom/customerlogin.html'),name='customerlogin'),
     path('customer-home', views.customer_home_view,name='customer-home'),
-    path('my-order', views.my_order_view,name='my-order'),
+    path('my-order', views.my_booking_view,name='my-order'),
     path('my-profile', views.my_profile_view,name='my-profile'),
     path('edit-profile', views.edit_profile_view,name='edit-profile'),
-    path('download-invoice/<int:orderID>/<int:productID>', views.download_invoice_view,name='download-invoice'),
+    path('download-invoice/<int:orderID>/<int:hostelID>', views.download_invoice_view,name='download-invoice'),
 
 
     path('add-to-cart/<int:pk>', views.add_to_cart_view,name='add-to-cart'),

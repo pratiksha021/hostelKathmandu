@@ -8,16 +8,16 @@ from django.contrib import messages
 from django.conf import settings
 
 def home_view(request):
-    products=models.Product.objects.all()
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
+    hostels=models.Hostel.objects.all()
+    if 'hostel_ids' in request.COOKIES:
+        hostel_ids = request.COOKIES['hostel_ids']
+        counter=hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
     else:
-        product_count_in_cart=0
+        Hostel_count_in_cart=0
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return render(request,'ecom/index.html',{'products':products,'product_count_in_cart':product_count_in_cart})
+    return render(request,'ecom/index.html',{'hostels':hostels,'Hostel_count_in_cart':Hostel_count_in_cart})
 
 
 #for showing login button for admin(by sumit)
@@ -59,6 +59,10 @@ def afterlogin_view(request):
     else:
         return redirect('admin-dashboard')
 
+
+
+
+
 #---------------------------------------------------------------------------------
 #------------------------ ADMIN RELATED VIEWS START ------------------------------
 #---------------------------------------------------------------------------------
@@ -66,24 +70,24 @@ def afterlogin_view(request):
 def admin_dashboard_view(request):
     # for cards on dashboard
     customercount=models.Customer.objects.all().count()
-    productcount=models.Product.objects.all().count()
-    ordercount=models.Orders.objects.all().count()
+    hostelcount=models.Hostel.objects.all().count()
+    bookingcount=models.Booking.objects.all().count()
 
-    # for recent order tables
-    orders=models.Orders.objects.all()
-    ordered_products=[]
-    ordered_bys=[]
-    for order in orders:
-        ordered_product=models.Product.objects.all().filter(id=order.product.id)
-        ordered_by=models.Customer.objects.all().filter(id = order.customer.id)
-        ordered_products.append(ordered_product)
-        ordered_bys.append(ordered_by)
+    # for recent booking tables
+    Booking=models.Booking.objects.all()
+    bookinged_Hostels=[]
+    bookinged_bys=[]
+    for booking in Booking:
+        bookinged_Hostel=models.Hostel.objects.all().filter(id=booking.Hostel.id)
+        bookinged_by=models.Customer.objects.all().filter(id = booking.customer.id)
+        bookinged_Hostels.append(bookinged_Hostel)
+        bookinged_bys.append(bookinged_by)
 
     mydict={
     'customercount':customercount,
-    'productcount':productcount,
-    'ordercount':ordercount,
-    'data':zip(ordered_products,ordered_bys,orders),
+    'hostelcount':hostelcount,
+    'bookingcount':bookingcount,
+    'data':zip(bookinged_Hostels,bookinged_bys,Booking),
     }
     return render(request,'ecom/admin_dashboard.html',context=mydict)
 
@@ -122,80 +126,80 @@ def update_customer_view(request,pk):
             return redirect('view-customer')
     return render(request,'ecom/admin_update_customer.html',context=mydict)
 
-# admin view the product
+# admin view the Hostel
 @login_required(login_url='adminlogin')
-def admin_products_view(request):
-    products=models.Product.objects.all()
-    return render(request,'ecom/admin_products.html',{'products':products})
+def admin_Hostels_view(request):
+    Hostels=models.Hostel.objects.all()
+    return render(request,'ecom/admin_hostels.html',{'Hostels':Hostels})
 
 
-# admin add product by clicking on floating button
+# admin add Hostel by clicking on floating button
 @login_required(login_url='adminlogin')
-def admin_add_product_view(request):
-    productForm=forms.ProductForm()
+def admin_add_Hostel_view(request):
+    HostelForm=forms.HostelForm()
     if request.method=='POST':
-        productForm=forms.ProductForm(request.POST, request.FILES)
-        if productForm.is_valid():
-            productForm.save()
-        return HttpResponseRedirect('admin-products')
-    return render(request,'ecom/admin_add_products.html',{'productForm':productForm})
+        HostelForm=forms.HostelForm(request.POST, request.FILES)
+        if HostelForm.is_valid():
+            HostelForm.save()
+        return HttpResponseRedirect('admin-hostels')
+    return render(request,'ecom/admin_add_hostels.html',{'HostelForm':HostelForm})
 
 
 @login_required(login_url='adminlogin')
-def delete_product_view(request,pk):
-    product=models.Product.objects.get(id=pk)
-    product.delete()
-    return redirect('admin-products')
+def delete_Hostel_view(request,pk):
+    Hostel=models.Hostel.objects.get(id=pk)
+    Hostel.delete()
+    return redirect('admin-hostels')
 
 
 @login_required(login_url='adminlogin')
-def update_product_view(request,pk):
-    product=models.Product.objects.get(id=pk)
-    productForm=forms.ProductForm(instance=product)
+def update_Hostel_view(request,pk):
+    Hostel=models.Hostel.objects.get(id=pk)
+    HostelForm=forms.HostelForm(instance=Hostel)
     if request.method=='POST':
-        productForm=forms.ProductForm(request.POST,request.FILES,instance=product)
-        if productForm.is_valid():
-            productForm.save()
-            return redirect('admin-products')
-    return render(request,'ecom/admin_update_product.html',{'productForm':productForm})
+        HostelForm=forms.HostelForm(request.POST,request.FILES,instance=Hostel)
+        if HostelForm.is_valid():
+            HostelForm.save()
+            return redirect('admin-hostels')
+    return render(request,'ecom/admin_update_Hostel.html',{'HostelForm':HostelForm})
 
 
 @login_required(login_url='adminlogin')
 def admin_view_booking_view(request):
-    orders=models.Orders.objects.all()
-    ordered_products=[]
-    ordered_bys=[]
-    for order in orders:
-        ordered_product=models.Product.objects.all().filter(id=order.product.id)
-        ordered_by=models.Customer.objects.all().filter(id = order.customer.id)
-        ordered_products.append(ordered_product)
-        ordered_bys.append(ordered_by)
-    return render(request,'ecom/admin_view_booking.html',{'data':zip(ordered_products,ordered_bys,orders)})
+    Booking=models.Booking.objects.all()
+    bookinged_Hostels=[]
+    bookinged_bys=[]
+    for booking in Booking:
+        bookinged_Hostel=models.Hostel.objects.all().filter(id=booking.Hostel.id)
+        bookinged_by=models.Customer.objects.all().filter(id = booking.customer.id)
+        bookinged_Hostels.append(bookinged_Hostel)
+        bookinged_bys.append(bookinged_by)
+    return render(request,'ecom/admin_view_booking.html',{'data':zip(bookinged_Hostels,bookinged_bys,Booking)})
 
 
 @login_required(login_url='adminlogin')
-def delete_order_view(request,pk):
-    order=models.Orders.objects.get(id=pk)
-    order.delete()
+def delete_booking_view(request,pk):
+    booking=models.Booking.objects.get(id=pk)
+    booking.delete()
     return redirect('admin-view-booking')
 
-# for changing status of order (pending,delivered...)
+# for changing status of booking (pending,delivered...)
 @login_required(login_url='adminlogin')
-def update_order_view(request,pk):
-    order=models.Orders.objects.get(id=pk)
-    orderForm=forms.OrderForm(instance=order)
+def update_booking_view(request,pk):
+    booking=models.Booking.objects.get(id=pk)
+    bookingForm=forms.bookingForm(instance=booking)
     if request.method=='POST':
-        orderForm=forms.OrderForm(request.POST,instance=order)
-        if orderForm.is_valid():
-            orderForm.save()
+        bookingForm=forms.bookingForm(request.POST,instance=booking)
+        if bookingForm.is_valid():
+            bookingForm.save()
             return redirect('admin-view-booking')
-    return render(request,'ecom/update_order.html',{'orderForm':orderForm})
+    return render(request,'ecom/update_booking.html',{'bookingForm':bookingForm})
 
 
 # admin view the feedback
 @login_required(login_url='adminlogin')
 def view_feedback_view(request):
-    feedbacks=models.Feedback.objects.all().order_by('-id')
+    feedbacks=models.Feedback.objects.all().booking_by('-id')
     return render(request,'ecom/view_feedback.html',{'feedbacks':feedbacks})
 
 
@@ -206,49 +210,49 @@ def view_feedback_view(request):
 def search_view(request):
     # whatever user write in search box we get in query
     query = request.GET['query']
-    products=models.Product.objects.all().filter(name__icontains=query)
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
+    hostels=models.Hostel.objects.all().filter(name__icontains=query)
+    if 'hostel_ids' in request.COOKIES:
+        hostel_ids = request.COOKIES['hostel_ids']
+        counter=hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
     else:
-        product_count_in_cart=0
+        Hostel_count_in_cart=0
 
     # word variable will be shown in html when user click on search button
     word="Searched Result :"
 
     if request.user.is_authenticated:
-        return render(request,'ecom/customer_home.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
-    return render(request,'ecom/index.html',{'products':products,'word':word,'product_count_in_cart':product_count_in_cart})
+        return render(request,'ecom/customer_home.html',{'hostels':hostels,'word':word,'Hostel_count_in_cart':Hostel_count_in_cart})
+    return render(request,'ecom/index.html',{'hostels':hostels,'word':word,'Hostel_count_in_cart':Hostel_count_in_cart})
 
 
-# any one can add product to cart, no need of signin
-def add_to_cart_view(request,pk):
-    products=models.Product.objects.all()
+# any one can add Hostel to cart, no need of signin
+def add_to_cart_view(request,pk):   
+    hostels=models.Hostel.objects.all()
 
-    #for cart counter, fetching products ids added by customer from cookies
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
-    else:
-        product_count_in_cart=1
+    #for cart counter, fetching Hostels ids added by customer from cookies
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        counter=Hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
+    else:   
+        Hostel_count_in_cart=1
 
-    response = render(request, 'ecom/index.html',{'products':products,'product_count_in_cart':product_count_in_cart})
+    response = render(request, 'ecom/index.html',{'hostels':hostels,'Hostel_count_in_cart':Hostel_count_in_cart})
 
-    #adding product id to cookies
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        if product_ids=="":
-            product_ids=str(pk)
+    #adding Hostel id to cookies
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        if Hostel_ids=="":
+            Hostel_ids=str(pk)
         else:
-            product_ids=product_ids+"|"+str(pk)
-        response.set_cookie('product_ids', product_ids)
+            Hostel_ids=Hostel_ids+"|"+str(pk)
+        response.set_cookie('Hostel_ids', Hostel_ids)
     else:
-        response.set_cookie('product_ids', pk)
+        response.set_cookie('Hostel_ids', pk)
 
-    product=models.Product.objects.get(id=pk)
-    messages.info(request, product.name + ' added to cart successfully!')
+    Hostel=models.Hostel.objects.get(id=pk)
+    messages.info(request, Hostel.name + ' added to cart successfully!')
 
     return response
 
@@ -257,60 +261,60 @@ def add_to_cart_view(request,pk):
 # for checkout of cart
 def cart_view(request):
     #for cart counter
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        counter=Hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
     else:
-        product_count_in_cart=0
+        Hostel_count_in_cart=0
 
-    # fetching product details from db whose id is present in cookie
-    products=None
+    # fetching Hostel details from db whose id is present in cookie
+    Hostels=None
     total=0
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        if product_ids != "":
-            product_id_in_cart=product_ids.split('|')
-            products=models.Product.objects.all().filter(id__in = product_id_in_cart)
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        if Hostel_ids != "":
+            Hostel_id_in_cart=Hostel_ids.split('|')
+            Hostels=models.Hostel.objects.all().filter(id__in = Hostel_id_in_cart)
 
             #for total price shown in cart
-            for p in products:
+            for p in Hostels:
                 total=total+p.price
-    return render(request,'ecom/cart.html',{'products':products,'total':total,'product_count_in_cart':product_count_in_cart})
+    return render(request,'ecom/cart.html',{'Hostels':Hostels,'total':total,'Hostel_count_in_cart':Hostel_count_in_cart})
 
 
 def remove_from_cart_view(request,pk):
     #for counter in cart
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        counter=Hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
     else:
-        product_count_in_cart=0
+        Hostel_count_in_cart=0
 
-    # removing product id from cookie
+    # removing Hostel id from cookie
     total=0
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        product_id_in_cart=product_ids.split('|')
-        product_id_in_cart=list(set(product_id_in_cart))
-        product_id_in_cart.remove(str(pk))
-        products=models.Product.objects.all().filter(id__in = product_id_in_cart)
-        #for total price shown in cart after removing product
-        for p in products:
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        Hostel_id_in_cart=Hostel_ids.split('|')
+        Hostel_id_in_cart=list(set(Hostel_id_in_cart))
+        Hostel_id_in_cart.remove(str(pk))
+        Hostels=models.Hostel.objects.all().filter(id__in = Hostel_id_in_cart)
+        #for total price shown in cart after removing Hostel
+        for p in Hostels:
             total=total+p.price
 
-        #  for update coookie value after removing product id in cart
+        #  for update coookie value after removing Hostel id in cart
         value=""
-        for i in range(len(product_id_in_cart)):
+        for i in range(len(Hostel_id_in_cart)):
             if i==0:
-                value=value+product_id_in_cart[0]
+                value=value+Hostel_id_in_cart[0]
             else:
-                value=value+"|"+product_id_in_cart[i]
-        response = render(request, 'ecom/cart.html',{'products':products,'total':total,'product_count_in_cart':product_count_in_cart})
+                value=value+"|"+Hostel_id_in_cart[i]
+        response = render(request, 'ecom/cart.html',{'Hostels':Hostels,'total':total,'Hostel_count_in_cart':Hostel_count_in_cart})
         if value=="":
-            response.delete_cookie('product_ids')
-        response.set_cookie('product_ids',value)
+            response.delete_cookie('Hostel_ids')
+        response.set_cookie('Hostel_ids',value)
         return response
 
 
@@ -330,53 +334,53 @@ def send_feedback_view(request):
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
 def customer_home_view(request):
-    products=models.Product.objects.all()
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
+    Hostels=models.Hostel.objects.all()
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        counter=Hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
     else:
-        product_count_in_cart=0
-    return render(request,'ecom/customer_home.html',{'products':products,'product_count_in_cart':product_count_in_cart})
+        Hostel_count_in_cart=0
+    return render(request,'ecom/customer_home.html',{'Hostels':Hostels,'Hostel_count_in_cart':Hostel_count_in_cart})
 
 
 
-# shipment address before placing order
+# shipment address before placing booking
 @login_required(login_url='customerlogin')
 def customer_address_view(request):
-    # this is for checking whether product is present in cart or not
-    # if there is no product in cart we will not show address form
-    product_in_cart=False
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        if product_ids != "":
-            product_in_cart=True
+    # this is for checking whether Hostel is present in cart or not
+    # if there is no Hostel in cart we will not show address form
+    Hostel_in_cart=False
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        if Hostel_ids != "":
+            Hostel_in_cart=True
     #for counter in cart
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        counter=product_ids.split('|')
-        product_count_in_cart=len(set(counter))
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        counter=Hostel_ids.split('|')
+        Hostel_count_in_cart=len(set(counter))
     else:
-        product_count_in_cart=0
+        Hostel_count_in_cart=0
 
     addressForm = forms.AddressForm()
     if request.method == 'POST':
         addressForm = forms.AddressForm(request.POST)
         if addressForm.is_valid():
-            # here we are taking address, email, mobile at time of order placement
+            # here we are taking address, email, mobile at time of booking placement
             # we are not taking it from customer account table because
             # these thing can be changes
             email = addressForm.cleaned_data['Email']
             mobile=addressForm.cleaned_data['Mobile']
             address = addressForm.cleaned_data['Address']
-            #for showing total price on payment page.....accessing id from cookies then fetching  price of product from db
+            #for showing total price on payment page.....accessing id from cookies then fetching  price of Hostel from db
             total=0
-            if 'product_ids' in request.COOKIES:
-                product_ids = request.COOKIES['product_ids']
-                if product_ids != "":
-                    product_id_in_cart=product_ids.split('|')
-                    products=models.Product.objects.all().filter(id__in = product_id_in_cart)
-                    for p in products:
+            if 'Hostel_ids' in request.COOKIES:
+                Hostel_ids = request.COOKIES['Hostel_ids']
+                if Hostel_ids != "":
+                    Hostel_id_in_cart=Hostel_ids.split('|')
+                    Hostels=models.Hostel.objects.all().filter(id__in = Hostel_id_in_cart)
+                    for p in Hostels:
                         total=total+p.price
 
             response = render(request, 'ecom/payment.html',{'total':total})
@@ -384,7 +388,7 @@ def customer_address_view(request):
             response.set_cookie('mobile',mobile)
             response.set_cookie('address',address)
             return response
-    return render(request,'ecom/customer_address.html',{'addressForm':addressForm,'product_in_cart':product_in_cart,'product_count_in_cart':product_count_in_cart})
+    return render(request,'ecom/customer_address.html',{'addressForm':addressForm,'Hostel_in_cart':Hostel_in_cart,'Hostel_count_in_cart':Hostel_count_in_cart})
 
 
 
@@ -393,24 +397,24 @@ def customer_address_view(request):
 #then only this view should be accessed
 @login_required(login_url='customerlogin')
 def payment_success_view(request):
-    # Here we will place order | after successful payment
+    # Here we will place booking | after successful payment
     # we will fetch customer  mobile, address, Email
-    # we will fetch product id from cookies then respective details from db
-    # then we will create order objects and store in db
-    # after that we will delete cookies because after order placed...cart should be empty
+    # we will fetch Hostel id from cookies then respective details from db
+    # then we will create booking objects and store in db
+    # after that we will delete cookies because after booking placed...cart should be empty
     customer=models.Customer.objects.get(user_id=request.user.id)
-    products=None
+    Hostels=None
     email=None
     mobile=None
     address=None
-    if 'product_ids' in request.COOKIES:
-        product_ids = request.COOKIES['product_ids']
-        if product_ids != "":
-            product_id_in_cart=product_ids.split('|')
-            products=models.Product.objects.all().filter(id__in = product_id_in_cart)
-            # Here we get products list that will be ordered by one customer at a time
+    if 'Hostel_ids' in request.COOKIES:
+        Hostel_ids = request.COOKIES['Hostel_ids']
+        if Hostel_ids != "":
+            Hostel_id_in_cart=Hostel_ids.split('|')
+            Hostels=models.Hostel.objects.all().filter(id__in = Hostel_id_in_cart)
+            # Here we get Hostels list that will be bookinged by one customer at a time
 
-    # these things can be change so accessing at the time of order...
+    # these things can be change so accessing at the time of booking...
     if 'email' in request.COOKIES:
         email=request.COOKIES['email']
     if 'mobile' in request.COOKIES:
@@ -418,15 +422,15 @@ def payment_success_view(request):
     if 'address' in request.COOKIES:
         address=request.COOKIES['address']
 
-    # here we are placing number of orders as much there is a products
-    # suppose if we have 5 items in cart and we place order....so 5 rows will be created in orders table
-    # there will be lot of redundant data in orders table...but its become more complicated if we normalize it
-    for product in products:
-        models.Orders.objects.get_or_create(customer=customer,product=product,status='Pending',email=email,mobile=mobile,address=address)
+    # here we are placing number of Booking as much there is a Hostels
+    # suppose if we have 5 items in cart and we place booking....so 5 rows will be created in Booking table
+    # there will be lot of redundant data in Booking table...but its become more complicated if we normalize it
+    for Hostel in Hostels:
+        models.Booking.objects.get_or_create(customer=customer,Hostel=Hostel,status='Pending',email=email,mobile=mobile,address=address)
 
-    # after order placed cookies should be deleted
+    # after booking placed cookies should be deleted
     response = render(request,'ecom/payment_success.html')
-    response.delete_cookie('product_ids')
+    response.delete_cookie('Hostel_ids')
     response.delete_cookie('email')
     response.delete_cookie('mobile')
     response.delete_cookie('address')
@@ -437,15 +441,15 @@ def payment_success_view(request):
 
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
-def my_order_view(request):
+def my_booking_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
-    orders=models.Orders.objects.all().filter(customer_id = customer)
-    ordered_products=[]
-    for order in orders:
-        ordered_product=models.Product.objects.all().filter(id=order.product.id)
-        ordered_products.append(ordered_product)
+    Booking=models.Booking.objects.all().filter(customer_id = customer)
+    bookinged_Hostels=[]
+    for booking in Booking:
+        bookinged_Hostel=models.Hostel.objects.all().filter(id=booking.Hostel.id)
+        bookinged_Hostels.append(bookinged_Hostel)
 
-    return render(request,'ecom/my_order.html',{'data':zip(ordered_products,orders)})
+    return render(request,'ecom/my_booking.html',{'data':zip(bookinged_Hostels,Booking)})
 
 
 
@@ -469,21 +473,21 @@ def render_to_pdf(template_src, context_dict):
 
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
-def download_invoice_view(request,orderID,productID):
-    order=models.Orders.objects.get(id=orderID)
-    product=models.Product.objects.get(id=productID)
+def download_invoice_view(request,bookingID,HostelID):
+    booking=models.Booking.objects.get(id=bookingID)
+    Hostel=models.Hostel.objects.get(id=HostelID)
     mydict={
-        'orderDate':order.order_date,
+        'bookingDate':booking.booking_date,
         'customerName':request.user,
-        'customerEmail':order.email,
-        'customerMobile':order.mobile,
-        'shipmentAddress':order.address,
-        'orderStatus':order.status,
+        'customerEmail':booking.email,
+        'customerMobile':booking.mobile,
+        'shipmentAddress':booking.address,
+        'Bookingtatus':booking.status,
 
-        'productName':product.name,
-        'productImage':product.product_image,
-        'productPrice':product.price,
-        'productDescription':product.description,
+        'HostelName':Hostel.name,
+        'HostelImage':Hostel.Hostel_image,
+        'HostelPrice':Hostel.price,
+        'HostelDescription':Hostel.description,
 
 
     }

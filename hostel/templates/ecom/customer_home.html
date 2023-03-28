@@ -1,391 +1,1217 @@
-{% extends 'ecom/customer_base.html' %}
+<!-- mysite -->
+<!doctype html>
+{% extends 'ecom/homebase.html' %}
 {% load static %}
 {% block content %}
 
+<html lang="en">
 
 
-  <style media="screen">
-    body,
-html {
-  height: 100%;
-}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-.d-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
+  <title>Hostel</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+
+
+  <style>
+    * {
+
+      box-sizing: border-box;
+    }
+
+    /* for content */
+
+
+
+    .el-wrapper {
+      width: 360px;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #fff;
+    }
+
+    .d-flex {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .align-center {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .flex-centerY-centerX {
+      justify-content: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    @media (max-width: 991px) {
+      .el-wrapper {
+        width: 345px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .el-wrapper {
+        width: 290px;
+        margin: 30px auto;
+      }
+    }
+
+    .el-wrapper:hover .h-bg {
+      left: 0px;
+    }
+
+    .el-wrapper:hover .price {
+      left: 20px;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      color: #818181;
+    }
+
+    .el-wrapper:hover .add-to-cart {
+      left: 50%;
+    }
+
+    .el-wrapper:hover .img {
+      -webkit-filter: blur(7px);
+      -o-filter: blur(7px);
+      -ms-filter: blur(7px);
+      filter: blur(7px);
+      filter: progid:DXImageTransform.Microsoft.Blur(pixelradius='7', shadowopacity='0.0');
+      opacity: 0.4;
+    }
+
+    .el-wrapper:hover .info-inner {
+      bottom: 155px;
+    }
+
+    .el-wrapper:hover .a-size {
+      -webkit-transition-delay: 300ms;
+      -o-transition-delay: 300ms;
+      transition-delay: 300ms;
+      bottom: 50px;
+      opacity: 1;
+    }
+
+    .el-wrapper .box-down {
+      width: 100%;
+      height: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .el-wrapper .box-up {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .el-wrapper .img {
+      padding: 20px 0;
+      -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+    }
+
+    .h-bg {
+      -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      width: 660px;
+      height: 100%;
+      background-color: #3f96cd;
+      position: absolute;
+      left: -659px;
+    }
+
+    .h-bg .h-bg-inner {
+      width: 50%;
+      height: 100%;
+      background-color: #464646;
+    }
+
+    .info-inner {
+      -webkit-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+      -o-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+      transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      position: absolute;
+      width: 100%;
+      bottom: 25px;
+    }
+
+    .info-inner .p-name,
+    .info-inner .p-company {
+      display: block;
+    }
+
+    .info-inner .p-name {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 18px;
+      color: #252525;
+    }
+
+    .info-inner .p-company {
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      text-transform: uppercase;
+      color: #FFE11B;
+    }
+
+    .a-size {
+      -webkit-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+      -o-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+      transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      position: absolute;
+      width: 100%;
+      bottom: -20px;
+      font-family: 'PT Sans', sans-serif;
+      color: #828282;
+      opacity: 0;
+    }
+
+    .a-size .size {
+      color: #252525;
+    }
+
+    .cart {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+
+    .cart .price {
+      -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-delay: 100ms;
+      -o-transition-delay: 100ms;
+      transition-delay: 100ms;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: #252525;
+    }
+
+    .cart .add-to-cart {
+      -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
+      /* ease-out */
+      -webkit-transition-delay: 100ms;
+      -o-transition-delay: 100ms;
+      transition-delay: 100ms;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 110%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .cart .add-to-cart .txt {
+      font-size: 12px;
+      color: #fff;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      height: 300px;
+      margin-top: 70px;
+      /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    }
+
+
+
+
+    /* search */
+
+   .searchme{
+    width: 630px;
+    border: 03px solid #de912c;
+    padding: 08px;
+    border-radius: 30px;
+
+   }
+   input{
+    background: transparent;
+    border: 0px;
+    outline: 0px;
+    width: 600;
+
+   }
+
+   .icon-search{
+    color: #121212;
+    font-size: 20px;
+    
+   }
+
+
+   /* try */
+
+    /* try */
+
+    .hostel-card {
   display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px;
+  width: 350px;
 }
 
-.align-center {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.flex-centerY-centerX {
-  justify-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-body {
-  background-color:#8c9eff;
-}
-
-.page-wrapper {
-  height: 100%;
-  display: table;
-}
-
-.page-wrapper .page-inner {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.el-wrapper {
-  width: 360px;
-  padding: 15px;
-  margin: 15px auto;
-  background-color: #fff;
-}
-
-@media (max-width: 991px) {
-  .el-wrapper {
-    width: 345px;
-  }
-}
-
-@media (max-width: 767px) {
-  .el-wrapper {
-    width: 290px;
-    margin: 30px auto;
-  }
-}
-
-.el-wrapper:hover .h-bg {
-  left: 0px;
-}
-
-.el-wrapper:hover .price {
-  left: 20px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  color: #818181;
-}
-
-.el-wrapper:hover .add-to-cart {
-  left: 50%;
-}
-
-.el-wrapper:hover .img {
-  webkit-filter: blur(7px);
-  -o-filter: blur(7px);
-  -ms-filter: blur(7px);
-  filter: blur(7px);
-  filter: progid:DXImageTransform.Microsoft.Blur(pixelradius='7', shadowopacity='0.0');
-  opacity: 0.4;
-}
-
-.el-wrapper:hover .info-inner {
-  bottom: 155px;
-}
-
-.el-wrapper:hover .a-size {
-  -webkit-transition-delay: 300ms;
-  -o-transition-delay: 300ms;
-  transition-delay: 300ms;
-  bottom: 50px;
-  opacity: 1;
-}
-
-.el-wrapper .box-down {
-  width: 100%;
-  height: 60px;
-  position: relative;
+.hostel-card-img {
+  height: 200px;
   overflow: hidden;
 }
 
-.el-wrapper .box-up {
-  width: 100%;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-}
-
-.el-wrapper .img {
-  padding: 20px 0;
-  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-}
-
-.h-bg {
-  -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  width: 660px;
+.hostel-card-img img {
   height: 100%;
-  background-color: #3f96cd;
-  position: absolute;
-  left: -659px;
-}
-
-.h-bg .h-bg-inner {
-  width: 50%;
-  height: 100%;
-  background-color: #464646;
-}
-
-.info-inner {
-  -webkit-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 400ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  position: absolute;
   width: 100%;
-  bottom: 25px;
+  object-fit: cover;
 }
 
-.info-inner .p-name,
-.info-inner .p-company {
-  display: block;
+.hostel-card-info {
+  padding: 20px;
 }
 
-.info-inner .p-name {
-  font-family: 'PT Sans', sans-serif;
-  font-size: 18px;
-  color: #252525;
+.hostel-card-title {
+  font-size: 20px;
+  margin: 0;
 }
 
-.info-inner .p-company {
-  font-family: 'Lato', sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #FFE11B;
+.hostel-card-location {
+  margin: 10px 0;
 }
 
-.a-size {
-  -webkit-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 300ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  position: absolute;
-  width: 100%;
-  bottom: -20px;
-  font-family: 'PT Sans', sans-serif;
-  color: #828282;
-  opacity: 0;
+.hostel-card-price {
+  margin: 10px 0;
+  font-weight: bold;
 }
 
-.a-size .size {
-  color: #252525;
-}
-
-.cart {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-}
-
-.cart .price {
-  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-delay: 100ms;
-  -o-transition-delay: 100ms;
-  transition-delay: 100ms;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: #252525;
-}
-
-.cart .add-to-cart {
-  -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-  /* ease-out */
-  -webkit-transition-delay: 100ms;
-  -o-transition-delay: 100ms;
-  transition-delay: 100ms;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 110%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.cart .add-to-cart .txt {
-  font-size: 12px;
+.hostel-card-btn {
+  display: inline-block;
+  background-color: #de912c;
   color: #fff;
-  letter-spacing: 0.045em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-* {
-  box-sizing: border-box;
-}
-
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.hostel-card-btn:hover {
+  background-color: #2d1d07;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
+   
   </style>
 
+</head>
+
+<body>
 
 
 
-  {%if products%}
-  <h3 style="text-align:center; color:yellow;">{{word}}</h3>
-  <br>
-  <!-- products data starttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt -->
-  <div class="row">
+  <!-- ======= carausal ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-      {% for p in products %}
-      <!-- card1 -->
-      <div class="column">
-      <div class="container page-wrapper" style="width: 450px;">
-        <div class="page-inner">
-          <div class="row">
-            <div class="el-wrapper">
-              <div class="box-up">
-                <img class="img" src="{% static p.product_image.url %}" alt="product pic" height="300px" width="300px">
-                <div class="img-info">
-                  <div class="info-inner">
-                    <span style="background-color:#08050a; color:yellow;" class="p-company">{{p.name}}</span>
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-                  </div>
-                  <div class="a-size">{{p.description}}</div>
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(/static/assets/img/slide/slide1.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown"><span>Hostel</span> Kathmandu</h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi
+                  ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea
+                  voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+             
+                  {% if user.is_authenticated %}
+                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Hello, {{ request.user}}</a>
+
+
+                  {% else %}
+                  <a href="" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
+                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
+                  {% endif %}
                 </div>
               </div>
+            </div>
+          
 
-              <div class="box-down">
-                <div class="h-bg">
-                  <div class="h-bg-inner"></div>
+          <!-- Slide 2 -->
+          <div class="carousel-item active" style="background-image: url(/static/assets/img/slide/slide1.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown"><span>Hostel</span> Kathmandu</h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi
+                  ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea
+                  voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <div>
+
+                  {% if user.is_authenticated %}
+                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Hello, {{ request.user}}</a>
+
+
+                  {% else %}
+                  <a href="" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
+                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
+                  {% endif %}
                 </div>
-
-                <a class="cart" href="{% url 'add-to-cart' p.id  %}">
-                  <span class="price">₹ {{p.price}}</span>
-                  <span class="add-to-cart">
-                    <span class="txt">Add in cart</span>
-                  </span>
-                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-<!-- card1 end -->
-{% if forloop.counter|divisibleby:"3" %}
     </div>
-    <div class="row">
-          <br><br><br><br><br>
-{% endif %}
+    </div>
 
-  {% endfor %}
-</div>
-<!-- products data enddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
+    </div>
 
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
 
-{%else%}
-<h3 style="text-align:center; color:yellow;">No Search Found</h3>
-{%endif%}
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
 
-<script>
-    {%if messages %}
-    {%for message in messages%}
-    alert('{{message}}');
-    {%endfor%}
-    {%endif%}
-</script>
-<br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    </div>
+  </section>
+  
+  <!-- End carausal -->
+
+  <main id="main">
 
 
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
 
 
+
+
+    <!-- ======= Menu Section ======= -->
+    <!-- <section id="menu" class="menu">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Check our <span>Menu</span></h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="menu-flters">
+              <li data-filter="*" class="filter-active">Show All</li>
+              <li data-filter=".filter-Boys">Boys</li>
+              <li data-filter=".filter-Girls">Girls</li>
+
+            </ul>
+          </div>
+        </div>
+
+        <div class="row menu-container">
+
+          <div class="col-lg-6 menu-item filter-Boys">
+            <div class="menu-content">
+              <a href="#">Lobster Bisque</a><span>$5.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-6 menu-item filter-Boys">
+            <div class="menu-content">
+              <a href="#">Crab Cake</a><span>$7.95</span>
+            </div>
+            <div class="menu-ingredients">
+              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-Girls">
+            <div class="menu-content">
+              <a href="#">Caesar Selections</a><span>$8.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+
+
+
+          <div class="col-lg-6 menu-item filter-Boys">
+            <div class="menu-content">
+              <a href="#">Mozzarella Stick</a><span>$4.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-Girls">
+            <div class="menu-content">
+              <a href="#">Greek Salad</a><span>$9.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Fresh spinach, crisp romaine, tomatoes, and Greek olives
+            </div>
+          </div>
+
+          <div class="col-lg-6 menu-item filter-Girls">
+            <div class="menu-content">
+              <a href="#">Spinach Salad</a><span>$9.95</span>
+            </div>
+            <div class="menu-ingredients">
+              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Menu Section -->
+
+
+    <!-- search bar -->
+    <br>
+    <br>
+
+
+
+    <div class="section-title">
+      <h2>Check our <span>Networks</span></h2>
+      <p>Best hostels in kathmandu valley</p><br><br>
+      
+
+      <div class="box">
+        <form action="/search" method="get">
+          <div class=""> <input class="searchme" type="search" placeholder="Search for hostels"
+              name="query" id="query">
+              
+            <button class="book-a-table-btn scrollto" type="submit"><i class="fa fa-search icon-search"></i>Search</button>
+          </div>
+        </form>
+        <i class="fas fa-search"></i>
+
+      </div>
+
+
+
+
+      <!-- search bar end -->
+
+
+
+
+
+
+
+
+
+
+
+      <!-- hostel section -->
+
+      {% if Hostels %}
+      <h3>{{word}}</h3>
+      <br>
+      <!-- products data startttttttttttttttttttttttttttt -->
+      <div class="row">
+
+        {% for p in Hostels %}
+        <!-- card1 -->
+        <div class="column">
+          <div class="container page-wrapper" style="width: 450px;">
+            <div class="page-inner">
+              <div class="row">
+                <div class="hostel-card">
+                  <div class="hostel-card-img">
+                    <img src="{% static p.hostel_image.url %}" alt="product pic">
+                  </div>
+                  <div class="hostel-card-info">
+                    <h3 class="hostel-card-title">{{p.name}}</h3>
+                    <p class="hostel-card-location">{{p.address}}</p>
+                    <p class="hostel-card-price">{{p.price}}</p>
+                    <a href="/customerlogin" class="hostel-card-btn">View More</a>
+                    <a href="/customerlogin" class="hostel-card-btn">Book Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- card1 end -->
+
+        {% if forloop.counter|divisibleby:"3" %}
+
+      </div>
+
+      <div class="row">
+        <br><br><br><br><br><br><br><br><br><br>
+
+        {% endif %}
+        {% endfor %}
+      </div>
+      <!-- hostel data enddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
+      {%else%}
+      <h3 style="text-align:center; color:rgb(6, 6, 5);">No Searchs Found</h3>
+      {%endif%}
+
+      <script>
+        {%if messages %}
+        {%for message in messages %}
+        alert('{{message}}');
+        {% endfor %}
+        {% endif %}
+      </script>
+      <br><br><br>
+
+
+
+
+      <!-- hostel section end -->
+
+
+      <!-- ======= Specials Section ======= -->
+      <br><br><br><br>
+      <section id="specials" class="specials">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-lg-3">
+              <ul class="nav nav-tabs flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Hostel near TU</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Hostel near Pulchok Campus</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hostel near Trinity</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Hostel near Sent Xeviour</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Hostel near Rehdon College</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+              <div class="tab-content">
+                <div class="tab-pane active show" id="tab-1">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Annapurna Boys Hostels</h3>
+                      <p class="fst-italic">Our speciality</p>
+                      <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa
+                        odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni
+                        nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{% static 'assets/img/specials.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-2">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Pulchok hostel</h3>
+                      <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata
+                        raqer
+                        a videna mareta paulona marka</p>
+                      <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt
+                        est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt
+                        eaque
+                        beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{% static 'assets/img/specials.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-3">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Mountain boys and girls hostel</h3>
+                      <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui
+                        natus
+                        non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
+                      <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque
+                        necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio.
+                        Earum
+                        odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{% static 'assets/img/specials.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-4">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>Daiko Hostel</h3>
+                      <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis
+                        delectus</p>
+                      <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus
+                        aliquam
+                        fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi
+                        asperiores
+                        sed qui veritatis aperiam quia a laborum inventore</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{% static 'assets/img/specials.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab-5">
+                  <div class="row">
+                    <div class="col-lg-8 details order-2 order-lg-1">
+                      <h3>HomeSweetHome Hostel</h3>
+                      <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
+                      <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut
+                        quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae
+                        molestiae voluptate vel</p>
+                    </div>
+                    <div class="col-lg-4 text-center order-1 order-lg-2">
+                      <img src="{% static 'assets/img/specials.jpg' %}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section><!-- End Specials Section -->
+
+
+
+      <!-- ======= Gallery Section ======= -->
+      <section id="gallery" class="gallery">
+        <div class="container-fluid">
+
+          <div class="section-title">
+            <h2>Our <span>Gallery</span></h2>
+            <p>Welcome to our gallery! Here, you'll find a collection of stunning photos.</p>
+          </div>
+
+          <div class="row g-0">
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-1.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-1.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-2.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-2.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-3.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-3.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-4.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-4.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-5.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-5.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-6.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-6.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-7.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-7.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4">
+              <div class="gallery-item">
+                <a href="{% static 'assets/img/gallery/gallery-8.jpg' %}" class="gallery-lightbox">
+                  <img src="{% static 'assets/img/gallery/gallery-8.jpg' %}" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Gallery Section -->
+
+      <!-- ======= Chefs Section ======= -->
+      <section id="chefs" class="chefs">
+        <div class="container">
+
+          <div class="section-title">
+            <h2>Our Proffesional <span>Team</span></h2>
+            <p>We are a dedicated and passionate group of individuals who are committed to providing the best possible
+              service to our clients .</p>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="member">
+                <div class="pic"><img src="{% static 'assets/img/chefs/chefs-11.jpeg' %}" class="img-fluid" alt="">
+                </div>
+                <div class="member-info">
+                  <h4>Meghna Maharjan</h4>
+                  <span>CEO & Brand Ambassador</span>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="member">
+                <div class="pic"><img src="{% static 'assets/img/chefs/chefs-22.jpeg' %}" class="img-fluid" alt="">
+                </div>
+                <div class="member-info">
+                  <h4>Pratiksha shrestha</h4>
+                  <span>Tech Supportive</span>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="member">
+                <div class="pic"><img src="{% static 'assets/img/chefs/chefs-33.jpeg' %}" class="img-fluid" alt="">
+                </div>
+                <div class="member-info">
+                  <h4>Sachet Manandhar</h4>
+                  <span>Office manager</span>
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Chefs Section -->
+
+      <!-- ======= Testimonials Section ======= -->
+      <section id="testimonials" class="testimonials" style="margin-top: 60px;">
+        <div class="container position-relative">
+
+          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Saul Goodman</h3>
+                  <h4>Ceo &amp; Founder</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
+                    Accusantium
+                    quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Designer</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
+                    quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-3.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Jena Karlis</h3>
+                  <h4>Store Owner</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim
+                    tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-4.jpg' %}" class="testimonial-img" alt="">
+                  <h3>Matt Brandon</h3>
+                  <h4>Freelancer</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit
+                    minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <img src="{% static 'assets/img/testimonials/testimonials-5.jpg' %}" class="testimonial-img" alt="">
+                  <h3>John Larson</h3>
+                  <h4>Entrepreneur</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                      class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
+                    culpa
+                    labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div><!-- End testimonial item -->
+
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+        </div>
+      </section><!-- End Testimonials Section -->
+
+      <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container">
+
+          <div class="section-title">
+            <h2><span>Contact</span> Us</h2>
+            <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque
+              vitae
+              autem.</p>
+          </div>
+        </div>
+
+        <div class="map">
+          <iframe style="border:0; width: 100%; height: 350px;"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+            frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="container mt-5">
+
+          <div class="info-wrap">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 info">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Basundhara<br>Kathmandu,535022</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="bi bi-clock"></i>
+                <h4>Open Hours:</h4>
+                <p>Monday-Saturday:<br>10:00 AM - 5:00 PM</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com<br>contact@example.com</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+977 9860586664<br>+977 9860586664</p>
+              </div>
+            </div>
+          </div>
+
+          <form method="POST" class="form-control" style="margin-top: 60px;"> {% csrf_token %}
+
+            <div class="row" style="margin-top: 20px;">
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Your name" required>
+
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">
+                  *
+                </button>
+                <strong>{{message}}</strong>
+              </div>
+              {% endfor %}
+              {% endif %}
+
+
+            </div>
+
+
+            <div class="text-center"><button type="submit" class="book-a-table-btn scrollto" value="submit">Send
+                Message</button></div>
+          </form>
+
+        </div>
+      </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  <script>
+    function openForm() {
+      document.getElementById("popupForm").style.display = "block";
+    }
+    function closeForm() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+
+    const searchFocus = document.getElementById('search-focus');
+    const keys = [
+      { keyCode: 'AltLeft', isTriggered: false },
+      { keyCode: 'ControlLeft', isTriggered: false },
+    ];
+
+    window.addEventListener('keydown', (e) => {
+      keys.forEach((obj) => {
+        if (obj.keyCode === e.code) {
+          obj.isTriggered = true;
+        }
+      });
+
+      const shortcutTriggered = keys.filter((obj) => obj.isTriggered).length === keys.length;
+
+      if (shortcutTriggered) {
+        searchFocus.focus();
+      }
+    });
+
+    window.addEventListener('keyup', (e) => {
+      keys.forEach((obj) => {
+        if (obj.keyCode === e.code) {
+          obj.isTriggered = false;
+        }
+      });
+    });
+
+
+  </script>
+
+</body>
 
 {% endblock content %}
+
+</html>
