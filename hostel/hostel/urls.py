@@ -53,7 +53,7 @@ urlpatterns = [
     path('my-profile', views.my_profile_view,name='my-profile'),
     path('edit-profile', views.edit_profile_view,name='edit-profile'),
     path('download-invoice/<int:orderID>/<int:hostelID>', views.download_invoice_view,name='download-invoice'),
-
+    path('hostel_detail/<id>', views.hostel_detail, name='hostel_detail'),
 
     path('add-to-cart/<int:pk>', views.add_to_cart_view,name='add-to-cart'),
     path('cart', views.cart_view,name='cart'),

@@ -648,6 +648,7 @@
 
         {% for p in Hostels %}
         <!-- card1 -->
+      
         <div class="column">
           <div class="container page-wrapper" style="width: 450px;">
             <div class="page-inner">
@@ -660,7 +661,7 @@
                     <h3 class="hostel-card-title">{{p.name}}</h3>
                     <p class="hostel-card-location">{{p.address}}</p>
                     <p class="hostel-card-price">{{p.price}}</p>
-                    <a href="/customerlogin" class="hostel-card-btn">View More</a>
+                    <a href="/hostel_detail/{{p.id}}" class="hostel-card-btn">View More</a>
                     <a href="/customerlogin" class="hostel-card-btn">Book Now</a>
                   </div>
                 </div>

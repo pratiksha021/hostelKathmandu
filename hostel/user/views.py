@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,reverse
+from django.shortcuts import render,redirect,reverse, get_object_or_404
 from . import forms,models
 from django.http import HttpResponseRedirect,HttpResponse
 from django.core.mail import send_mail
@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib import messages
 from django.conf import settings
+from .models import Hostel
 
 def home_view(request):
     hostels=models.Hostel.objects.all()
@@ -59,7 +60,12 @@ def afterlogin_view(request):
     else:
         return redirect('admin-dashboard')
 
-
+def hostel_detail(request, id):
+    hostel=models.Hostel.objects.get(id=id)
+    data = {
+        'hostel':hostel
+    }
+    return render(request, 'ecom/hostel_detail.html', data)
 
 
 
@@ -335,10 +341,13 @@ def send_feedback_view(request):
 @user_passes_test(is_customer)
 def customer_home_view(request):
     Hostels=models.Hostel.objects.all()
+    print("hiii")
+   
     if 'Hostel_ids' in request.COOKIES:
         Hostel_ids = request.COOKIES['Hostel_ids']
         counter=Hostel_ids.split('|')
         Hostel_count_in_cart=len(set(counter))
+        
     else:
         Hostel_count_in_cart=0
     return render(request,'ecom/customer_home.html',{'Hostels':Hostels,'Hostel_count_in_cart':Hostel_count_in_cart})

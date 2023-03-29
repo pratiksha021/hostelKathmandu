@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 # Create your models here.
 class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -21,7 +22,7 @@ class HostelOwner(models.Model):
     phone_number = models.CharField(max_length=20)
 
 class Hostel(models.Model):
-   
+    slug = models.SlugField(max_length=255, unique=True)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
     hostel_image= models.ImageField(upload_to='product_image/',null=True,blank=True)
@@ -39,7 +40,10 @@ class Hostel(models.Model):
     def __str__(self):
         return self.name
 
-
+    def save(self, *args, **kwargs):
+            # Override the slug field with a slugified version of the name field
+            self.slug = slugify(self.name)
+            super().save(*args, **kwargs)
 
 
 
