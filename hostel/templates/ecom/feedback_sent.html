@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 {% load static %}
 {% load widget_tweaks %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Hostel Kathmandu</title>
 
 
+</head>
+
+<body>
 
   {%if request.user.is_authenticated%}
-    {% include "ecom/customer_navbar.html" %}
+  {% include "ecom/customer_navbar.html" %}
   {%else%}
-    {% include "ecom/navbar.html" %}
+  {% include "ecom/navbar.html" %}
   {%endif%}
-<br><br><br>
-<h3 style="color:blue;text-align:center;">Your Feedback Sent Succesfully !</h3>
-<br>
-<div style="text-align:center;">
-  <img src="{% static "images/success.png" %}"  style="width:100px; height:100px; ">
-</div>
+  <div
+    style="height: 300px; text-align: center; background-image: url(/static/assets/img/slide/slide1.jpg);background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <h2 style="padding-top: 130px; color: white; text-decoration: underline;"><b>/Send Feedback</b></h2>
+  </div>
+  <div class="jumbotron" style="margin-top: 20px;">
+    <h1 class="display-4">Your feedback sent successfully !</h1>
+    <p class="lead">We will respond to your feedback soon</p>
+    <hr class="my-4">
+    <p>Check other features of website !</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+    </p>
+  </div>
 
-<br><br><br><br><br><br><br><br>
+
+
   {% include "ecom/footer.html" %}
+</body>
+<script src="{% static 'assets/js/main.js' %}"></script>
 
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+</html>

@@ -713,7 +713,7 @@ section {
 .about .play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(#222121 50%, rgba(83, 90, 122, 0.4) 52%);
+  background: radial-gradient(#d1ac31 50%, rgba(220, 187, 37, 0.4) 52%);
   border-radius: 50%;
   display: block;
   position: absolute;
@@ -761,7 +761,7 @@ section {
 }
 
 .about .play-btn:hover::after {
-  border-left: 15px solid #4a4c70;
+  border-left: 15px solid #cba533;
   transform: scale(20);
 }
 
@@ -859,7 +859,7 @@ section {
 }
 
 .why-us .box:hover {
-  background: #181825;
+  background: #d2a949;
   padding: 30px 30px 70px 30px;
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
 }
@@ -1634,4 +1634,30 @@ section {
 
 #footer .credits {
   font-size: 13px;
+}
+
+
+/* breadcrumbs */
+
+.aboutus-head {
+  height: 00px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+}
+
+.aboutus-head::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+
+  /* Change the alpha value (last parameter) to adjust the darkness */
 }

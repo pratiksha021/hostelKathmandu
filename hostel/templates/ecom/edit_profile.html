@@ -1,85 +1,229 @@
-{% extends 'ecom/customer_base.html' %}
+{% extends 'ecom/homebase.html' %}
 {% load widget_tweaks %}
+{% load static %}
 {% block content %}
 
+<html lang="en">
+
 <head>
-  <style media="screen">
+  <style>
     body {
-      background-color:#ffffff;
-    }
-    a:link {
-      text-decoration: none;
+      color: #6F8BA4;
+      margin-top: 20px;
     }
 
-    .note {
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .gray-bg {
+      background-color: #f5f5f5;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    /* About Me 
+---------------------*/
+    .about-text h3 {
+      font-size: 45px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    @media (max-width: 767px) {
+      .about-text h3 {
+        font-size: 35px;
+      }
+    }
+
+    .about-text h6 {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 767px) {
+      .about-text h6 {
+        font-size: 18px;
+      }
+    }
+
+    .about-text p {
+      font-size: 18px;
+      max-width: 450px;
+    }
+
+    .about-text p mark {
+      font-weight: 600;
+      color: #20247b;
+    }
+
+    .about-list {
+      padding-top: 10px;
+    }
+
+    .about-list .media {
+      padding: 5px 0;
+    }
+
+    .about-list label {
+      color: #20247b;
+      font-weight: 600;
+      width: 88px;
+      margin: 0;
+      position: relative;
+    }
+
+    .about-list label:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 11px;
+      width: 1px;
+      height: 12px;
+      background: #20247b;
+      -moz-transform: rotate(15deg);
+      -o-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+      -webkit-transform: rotate(15deg);
+      transform: rotate(15deg);
+      margin: auto;
+      opacity: 0.5;
+    }
+
+    .about-list p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    @media (max-width: 991px) {
+      .about-avatar {
+        margin-top: 30px;
+      }
+    }
+
+    .about-section .counter {
+      padding: 22px 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+    }
+
+    .about-section .counter .count-data {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .about-section .counter .count {
+      font-weight: 700;
+      color: #20247b;
+      margin: 0 0 5px;
+    }
+
+    .about-section .counter p {
+      font-weight: 600;
+      margin: 0;
+    }
+
+    mark {
+      background-image: linear-gradient(rgba(252, 83, 86, 0.6), rgba(252, 83, 86, 0.6));
+      background-size: 100% 3px;
+      background-repeat: no-repeat;
+      background-position: 0 bottom;
+      background-color: transparent;
+      padding: 0;
+      color: currentColor;
+    }
+
+    .theme-color {
+      color: #fc5356;
+    }
+
+    .dark-color {
+      color: #20247b;
+    }
+     
+    .aboutus-head {
+      height: 00px;
       text-align: center;
-      height: 80px;
-      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
-      color: #fff;
-      font-weight: bold;
-      line-height: 80px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      color: white;
     }
 
-    .form-content {
-      padding: 5%;
-      border: 1px solid #ced4da;
-      margin-bottom: 2%;
-    }
+    .aboutus-head::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
 
-    .form-control {
-      border-radius: 1.5rem;
-    }
 
-    .btnSubmit {
-      border: none;
-      border-radius: 1.5rem;
-      padding: 1%;
-      width: 20%;
-      cursor: pointer;
-      background: #0062cc;
-      color: #fff;
-    }
-
-    .menu{
-      top: 50px;
+      /* Change the alpha value (last parameter) to adjust the darkness */
     }
   </style>
-
-
 </head>
-<br><br><br><br><br><br>
+
+<body>
+
+  <div class="aboutus-head"
+  style="height: 300px; text-align: center; background-image: url(/static/assets/img/breadcrump/profile.png);background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <h2 style="padding-top: 130px; color: white; text-decoration: underline;"><b>/Edit Profile</b></h2>
+</div>
+
+
+
 <!------ update page for doctor by admin(sumit)  ---------->
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>EDIT PROFILE</p>
+        <h2 style="text-align: center; margin-top: 40px; margin-bottom: 30px;">EDIT PROFILE</h2>
       </div>
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
+              <label>First name</label>
               {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
             </div>
             <div class="form-group">
+              <label>username</label>
               {% render_field userForm.username class="form-control" placeholder="Username" %}
             </div>
             <div class="form-group">
+              <label>contact</label>
               {% render_field customerForm.mobile class="form-control" placeholder="Mobile" %}
             </div>
             <div class="form-group">
+              <label>profile Image</label>
               {% render_field customerForm.profile_pic class="form-control" placeholder="Profile Picture" %}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label>Last name</label>
               {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
             </div>
             <div class="form-group">
+              <label>password</label>
               {% render_field userForm.password class="form-control" placeholder="Password" %}
             </div>
             <div class="form-group">
+              <label>Address</label>
               {% render_field customerForm.address class="form-control" placeholder="Address" %}
             </div>
 
@@ -90,10 +234,9 @@
     </div>
   </div>
 </form>
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+</body>
+</html>
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
 
 {% endblock content %}

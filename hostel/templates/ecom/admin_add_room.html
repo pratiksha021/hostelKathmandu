@@ -1,0 +1,80 @@
+{% extends 'ecom/admin_base.html' %}
+
+{% block content %}
+{% load widget_tweaks %}
+
+<!------ update page for doctor by pratiksha ---------->
+<div id="layoutSidenav_content">
+  <main>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container register-form">
+    <div class="form">
+      <div class="note">
+        <p>ADD ROOM</p>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label>Select hostel</label>
+              {% render_field roomForm.hostel class="form-control" placeholder="Hostel Name" %}
+            </div>
+            <div class="form-group">
+              <label>Room type</label>
+              {% render_field roomForm.type_name class="form-control" placeholder="address" %}
+            </div>
+            <div class="form-group">
+                <label>Occupancy</label>
+                {% render_field roomForm.occupancy class="form-control" placeholder="address" %}
+              </div>
+              <div class="form-group">
+                <label>Room type</label>
+                {% render_field roomForm.room_type class="form-control" placeholder="address" %}
+              </div>
+              <div class="form-group">
+                <label>Maximum Person</label>
+                {% render_field roomForm.maximum class="form-control" placeholder="address" %}
+              </div>
+              
+          </div>
+          <div class="col-md-6">
+
+            
+              <div class="form-group">
+                <label>Available</label>
+                {% render_field roomForm.available class="form-control" placeholder="address" %}
+              </div>
+              <div class="form-group">
+                <label>Cost</label>
+                {% render_field roomForm.cost class="form-control" placeholder="address" %}
+              </div>
+              <div class="form-group">
+                <label>Upload Room Front Image</label>
+                {% render_field roomForm.img1 class="form-control" %}
+              </div>
+              <div class="form-group">
+                <label>Upload Room Back Image</label>
+                {% render_field roomForm.img2 class="form-control" %}
+              </div>
+              <div class="form-group">
+                <label>Upload Room side Image</label>
+                {% render_field roomForm.img3 class="form-control" %}
+              </div>
+          </div>
+        </div>
+        <br><br>
+
+        <button type="submit" class="btnSubmit">ADD</button>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+</form>
+</main>
+
+{% endblock content %}
+

@@ -10,6 +10,7 @@ from .models import Hostel
 
 def home_view(request):
     hostels=models.Hostel.objects.all()
+    rating=Hostel.rating
     if 'hostel_ids' in request.COOKIES:
         hostel_ids = request.COOKIES['hostel_ids']
         counter=hostel_ids.split('|')
@@ -18,7 +19,7 @@ def home_view(request):
         Hostel_count_in_cart=0
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return render(request,'ecom/index.html',{'hostels':hostels,'Hostel_count_in_cart':Hostel_count_in_cart})
+    return render(request,'ecom/index.html',{'hostels':hostels,'Hostel_count_in_cart':Hostel_count_in_cart, 'rating':rating})
 
 
 #for showing login button for admin(by sumit)
@@ -66,6 +67,14 @@ def hostel_detail(request, id):
         'hostel':hostel
     }
     return render(request, 'ecom/hostel_detail.html', data)
+
+
+def room_detail(request, id):
+    room = models.Room.objects.filter(hostel_id=id)
+    data = {
+        'room':room
+    }
+    return render(request, 'ecom/room_detail.html', data)
 
 
 
@@ -138,6 +147,10 @@ def admin_Hostels_view(request):
     Hostels=models.Hostel.objects.all()
     return render(request,'ecom/admin_hostels.html',{'Hostels':Hostels})
 
+@login_required(login_url='adminlogin')
+def admin_Hostels_images_view(request, pk):
+    Hostels=models.Hostel.objects.get(id=pk)
+    return render(request,'ecom/hostel_images.html',{'Hostels':Hostels})
 
 # admin add Hostel by clicking on floating button
 @login_required(login_url='adminlogin')
@@ -168,6 +181,46 @@ def update_Hostel_view(request,pk):
             HostelForm.save()
             return redirect('admin-hostels')
     return render(request,'ecom/admin_update_Hostel.html',{'HostelForm':HostelForm})
+
+
+# admin view the room
+@login_required(login_url='adminlogin')
+def admin_room_view(request):
+    room=models.Room.objects.all()
+    return render(request,'ecom/admin_room.html',{'room':room})
+
+
+# admin add room by clicking on floating button
+@login_required(login_url='adminlogin')
+def admin_add_room_view(request):
+    roomForm=forms.roomForm()
+    if request.method=='POST':
+        roomForm=forms.roomForm(request.POST, request.FILES)
+        if roomForm.is_valid():
+            roomForm.save()
+        return HttpResponseRedirect('admin-hostels')
+    return render(request,'ecom/admin_add_room.html',{'roomForm':roomForm})
+
+
+@login_required(login_url='adminlogin')
+def delete_room_view(request,pk):
+    room=models.Room.objects.get(id=pk)
+    room.delete()
+    return redirect('admin-room')
+
+
+@login_required(login_url='adminlogin')
+def update_room_view(request,pk):
+    room=models.Room.objects.get(id=pk)
+    roomForm=forms.roomForm(instance=room)
+    if request.method=='POST':
+        roomForm=forms.roomForm(request.POST,request.FILES,instance=room)
+        if roomForm.is_valid():
+            roomForm.save()
+            return redirect('admin-room')
+    return render(request,'ecom/admin_update_room.html',{'roomForm':roomForm})
+
+
 
 
 @login_required(login_url='adminlogin')
@@ -205,7 +258,7 @@ def update_booking_view(request,pk):
 # admin view the feedback
 @login_required(login_url='adminlogin')
 def view_feedback_view(request):
-    feedbacks=models.Feedback.objects.all().booking_by('-id')
+    feedbacks=models.Feedback.objects.all()
     return render(request,'ecom/view_feedback.html',{'feedbacks':feedbacks})
 
 
@@ -340,9 +393,7 @@ def send_feedback_view(request):
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
 def customer_home_view(request):
-    Hostels=models.Hostel.objects.all()
-    print("hiii")
-   
+    Hostels=models.Hostel.objects.all()   
     if 'Hostel_ids' in request.COOKIES:
         Hostel_ids = request.COOKIES['Hostel_ids']
         counter=Hostel_ids.split('|')

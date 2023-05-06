@@ -19,9 +19,7 @@
   <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
-    rel="stylesheet">
+  
 
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
@@ -57,13 +55,13 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
           <li><a class="nav-link scrollto" href="/aboutus">About Us</a></li>
           <li><a class="nav-link scrollto" href="/contactus">Contact Us</a></li>
           <li><a class="nav-link scrollto" href="/send-feedback">Send Feedback</a></li>
           <!-- <li><a class="nav-link scrollto" href="#events">Events</a></li>
           <li><a class="nav-link scrollto" href="#chefs">Chefs</a></li> -->
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="/">Gallery</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -74,12 +72,14 @@
   </header><!-- End Header -->
 
   <script>
-    $(document).ready(function () {
-      $('nav a').click(function () {
-        $('nav a').removeClass('active');
-        $(this).addClass('active');
-      });
-    });
-  </script>
+    const activePage = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a').forEach(link => {
+        if (link.href.includes(`${activePage}`)) {
+            link.classList.add('active');
+            console.log(link);
+        }
+    })
+
+</script>
 
 </body>

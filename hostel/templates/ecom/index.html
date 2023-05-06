@@ -2,44 +2,13 @@
 <!doctype html>
 {% extends 'ecom/homebase.html' %}
 {% load static %}
+
 {% block content %}
 
 <html lang="en">
 
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Hostel</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
-    rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
-
-
   <style>
     * {
 
@@ -240,74 +209,7 @@
       color: #252525;
     }
 
-    .cart {
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      font-family: 'Lato', sans-serif;
-      font-weight: 700;
-    }
 
-    .cart .price {
-      -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      /* ease-out */
-      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      /* ease-out */
-      -webkit-transition-delay: 100ms;
-      -o-transition-delay: 100ms;
-      transition-delay: 100ms;
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      font-size: 16px;
-      color: #252525;
-    }
-
-    .cart .add-to-cart {
-      -webkit-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      -moz-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      -o-transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      transition: all 600ms cubic-bezier(0, 0, 0.18, 1);
-      /* ease-out */
-      -webkit-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      -moz-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      -o-transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      transition-timing-function: cubic-bezier(0, 0, 0.18, 1);
-      /* ease-out */
-      -webkit-transition-delay: 100ms;
-      -o-transition-delay: 100ms;
-      transition-delay: 100ms;
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 110%;
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    .cart .add-to-cart .txt {
-      font-size: 12px;
-      color: #fff;
-      letter-spacing: 0.045em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
 
     * {
       box-sizing: border-box;
@@ -342,85 +244,413 @@
 
     /* search */
 
-   .searchme{
-    width: 630px;
-    border: 03px solid #de912c;
-    padding: 08px;
-    border-radius: 30px;
+    .searchme {
+      width: 630px;
+      border: 03px solid #de912c;
+      padding: 08px;
+      border-radius: 30px;
 
-   }
-   input{
-    background: transparent;
-    border: 0px;
-    outline: 0px;
-    width: 600;
+    }
 
-   }
+    input {
+      background: transparent;
+      border: 0px;
+      outline: 0px;
+      width: 600;
 
-   .icon-search{
-    color: #121212;
-    font-size: 20px;
-    
-   }
+    }
+
+    .icon-search {
+      color: #121212;
+      font-size: 20px;
+
+    }
 
 
-   /* try */
 
-   .hostel-card {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 10px;
-  width: 350px;
-}
 
-.hostel-card-img {
-  height: 200px;
-  overflow: hidden;
-}
 
-.hostel-card-img img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
 
-.hostel-card-info {
-  padding: 20px;
-}
 
-.hostel-card-title {
-  font-size: 20px;
-  margin: 0;
-}
+    /* product */
 
-.hostel-card-location {
-  margin: 10px 0;
-}
+    .prod-info-main {
+      border-radius: 10px;
+      border: 1px solid #CEEFFF;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      background-color: #ffffff;
+      padding: 6px;
 
-.hostel-card-price {
-  margin: 10px 0;
-  font-weight: bold;
-}
+      -webkit-box-shadow: 0 1px 4px 0 rgba(245, 250, 252, 0.5);
+      box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.5);
+    }
 
-.hostel-card-btn {
-  display: inline-block;
-  background-color: #de912c;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
+    .prod-info-main .product-image {
+      background-color: #ffffff;
+      display: block;
+      min-height: 238px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #fffbce;
+      padding-top: 40px;
+      transition: transform 0.2s ease-in-out;
 
-.hostel-card-btn:hover {
-  background-color: #50320a;
-}
+    }
 
-   
+    .prod-info-main .product-image:hover {
+      transform: scale(1.2);
+    }
+
+
+
+    .prod-info-main .product-deatil {
+      border-bottom: 1px solid #dfe5e9;
+      padding-bottom: 17px;
+      padding-left: 16px;
+      padding-top: 16px;
+      position: relative;
+      background: #fff
+    }
+
+    .product-content .product-deatil h5 a {
+      color: #2f383d;
+      font-size: 15px;
+      line-height: 19px;
+      text-decoration: none;
+      padding-left: 0;
+      margin-left: 0
+    }
+
+    .prod-info-main .product-deatil h5 a span {
+      color: #9aa7af;
+      display: block;
+      font-size: 13px
+    }
+
+    .prod-info-main .product-deatil span.tag1 {
+      border-radius: 50%;
+      color: #fff;
+      font-size: 15px;
+      height: 50px;
+      padding: 13px 0;
+      position: absolute;
+      right: 10px;
+      text-align: center;
+      top: 10px;
+      width: 50px
+    }
+
+    .prod-info-main .product-deatil span.sale {
+      background-color: #21c2f8
+    }
+
+    .prod-info-main .product-deatil span.discount {
+      background-color: #71e134
+    }
+
+    .prod-info-main .product-deatil span.hot {
+      background-color: #fa9442
+    }
+
+    .prod-info-main .description {
+      font-size: 12.5px;
+      line-height: 20px;
+      padding: 10px 14px 16px 19px;
+      background: #fff
+    }
+
+    .prod-info-main .product-info {
+      padding: 11px 19px 10px 20px
+    }
+
+    .prod-info-main .product-info a.add-to-cart {
+      color: #2f383d;
+      font-size: 13px;
+      padding-left: 16px
+    }
+
+    .prod-info-main name.a {
+      padding: 5px 10px;
+      margin-left: 16px
+    }
+
+    .product-info.smart-form .btn {
+      padding: 6px 12px;
+      margin-left: 12px;
+      margin-top: -10px
+    }
+
+    .load-more-btn {
+      background-color: #21c2f8;
+      border-bottom: 2px solid #037ca5;
+      border-radius: 2px;
+      border-top: 2px solid #0cf;
+      margin-top: 20px;
+      padding: 9px 0;
+      width: 100%
+    }
+
+    .product-block .product-deatil p.price-container span,
+    .prod-info-main .product-deatil p.price-container span,
+    .shipping table tbody tr td p.price-container span,
+    .shopping-items table tbody tr td p.price-container span {
+      color: #21c2f8;
+      font-family: Lato, sans-serif;
+      font-size: 24px;
+      line-height: 20px
+    }
+
+    .product-info.smart-form .rating label {
+      margin-top: 15px;
+
+    }
+
+    .prod-wrap .product-image span.tag2 {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      padding: 10px 0;
+      color: #fff;
+      font-size: 11px;
+      text-align: center
+    }
+
+    .prod-wrap .product-image span.tag3 {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 60px;
+      height: 36px;
+      border-radius: 50%;
+      padding: 10px 0;
+      color: #fff;
+      font-size: 11px;
+      text-align: center
+    }
+
+    .prod-wrap .product-image span.sale {
+      background-color: #9c9657;
+    }
+
+    .prod-wrap .product-image span.hot {
+      background-color: #a90329;
+    }
+
+    .prod-wrap .product-image span.special {
+      background-color: #ad9a2d;
+    }
+
+    .shop-btn {
+      position: relative
+    }
+
+    .shop-btn>span {
+      background: #a98203;
+      display: inline-block;
+      font-size: 10px;
+      box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 2px 4px 3px !important;
+      text-align: center;
+      line-height: normal;
+      width: 19px;
+      top: -7px;
+      left: -7px
+    }
+
+    .product-deatil hr {
+      padding: 0 0 5px !important
+    }
+
+    .product-deatil .glyphicon {
+      color: #d3b315
+    }
+
+    .product-deatil .product-image {
+      border-right: 0px solid #fff !important
+    }
+
+    .product-deatil .name {
+      margin-top: 0;
+      margin-bottom: 0
+    }
+
+    .product-deatil .name small {
+      display: block
+    }
+
+    .product-deatil .name a {
+      margin-left: 0
+    }
+
+    .product-deatil .price-container {
+      font-size: 24px;
+      margin: 0;
+      font-weight: 300;
+
+    }
+
+    .product-deatil .price-container small {
+      font-size: 12px;
+
+    }
+
+    .product-deatil .fa-2x {
+      font-size: 16px !important
+    }
+
+    .product-deatil .fa-2x>h5 {
+      font-size: 12px;
+      margin: 0
+    }
+
+    .product-deatil .fa-2x+a,
+    .product-deatil .fa-2x+a+a {
+      font-size: 13px
+    }
+
+    .product-deatil .certified {
+      margin-top: 10px
+    }
+
+    .product-deatil .certified ul {
+      padding-left: 0
+    }
+
+    .product-deatil .certified ul li:not(first-child) {
+      margin-left: -3px
+    }
+
+    .product-deatil .certified ul li {
+      display: inline-block;
+      background-color: #f9f9f9;
+      padding: 13px 19px
+    }
+
+    .product-deatil .certified ul li:first-child {
+      border-right: none
+    }
+
+    .product-deatil .certified ul li a {
+      text-align: left;
+      font-size: 12px;
+      color: #6d7a83;
+      line-height: 16px;
+      text-decoration: none
+    }
+
+    .product-deatil .certified ul li a span {
+      display: block;
+      color: #252a2c;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center
+    }
+
+    .product-deatil .message-text {
+      width: calc(100% - 70px)
+    }
+
+    /*--Button effect classes for add to cart*/
+    .btn-cart {
+      border-radius: 0;
+      position: relative;
+      color: #fff;
+      border: 1px solid transparent;
+      text-transform: uppercase;
+      transition: all 0.40s ease 0s;
+    }
+
+    .btn-cart:after {
+      content: "\f07a";
+      font-family: fontawesome;
+      position: absolute;
+      right: 6px;
+      top: -4px;
+      opacity: 0;
+      color: #fff;
+      transition: all 0.40s ease 0s;
+    }
+
+    .btn-cart:hover:after {
+      top: 40%;
+      opacity: 5;
+    }
+
+    .btn-cart span {
+      display: block;
+      transition: all 0.70s linear 0s;
+    }
+
+    .btn-cart:hover span {
+      transform: translate(-9px);
+    }
+
+    /*--Button effect classes for More info*/
+    .btn-info {
+      border-radius: 0;
+      position: relative;
+      color: #fff;
+      border: 1px solid transparent;
+      text-transform: uppercase;
+      transition: all 0.40s ease 0s;
+    }
+
+    .btn-info:after {
+      content: "\f129";
+      font-family: fontawesome;
+      position: absolute;
+      right: 6px;
+      top: -4px;
+      opacity: 0;
+      color: #fff;
+      transition: all 0.40s ease 0s;
+    }
+
+    .btn-info:hover:after {
+      top: 40%;
+      opacity: 5;
+    }
+
+    .btn-info span {
+      display: block;
+      transition: all 0.70s linear 0s;
+    }
+
+    .btn-info:hover span {
+      transform: translate(-9px);
+    }
+
+    @media only screen and (min-width:1024px) {
+      .prod-info-main div[class*=col-md-4] {
+        padding-right: 0
+      }
+
+      .prod-info-main div[class*=col-md-8] {
+        padding: 0 13px 0 0
+      }
+
+      .prod-wrap div[class*=col-md-5] {
+        padding-right: 0
+      }
+
+      .prod-wrap div[class*=col-md-7] {
+        padding: 0 13px 0 0
+      }
+
+      .prod-info-main .product-image {
+        border-right: 1px solid #dfe5e9
+      }
+
+      .prod-info-main .product-info {
+        position: relative
+      }
+    }
   </style>
 
 </head>
@@ -446,19 +676,19 @@
                 <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi
                   ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea
                   voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-             
-                  {% if user.is_authenticated %}
-                  <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Hello, {{ request.user}}</a>
 
-                  
-                  {% else %}
-                  <a href="/customerlogin" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
-                  <a href="/customersignup" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
-                  {% endif %}
-                </div>
+                {% if user.is_authenticated %}
+                <a href="" class="btn-book animate__animated animate__fadeInUp scrollto">Hello, {{ request.user}}</a>
+
+
+                {% else %}
+                <a href="/customerlogin" class="btn-menu animate__animated animate__fadeInUp scrollto">Login</a>
+                <a href="/customersignup" class="btn-book animate__animated animate__fadeInUp scrollto">Register</a>
+                {% endif %}
               </div>
             </div>
-          
+          </div>
+
 
           <!-- Slide 2 -->
           <div class="carousel-item active" style="background-image: url(/static/assets/img/slide/slide1.jpg);">
@@ -499,129 +729,33 @@
     </div>
     </div>
   </section>
-  
+
   <!-- End carausal -->
 
   <main id="main">
 
 
 
-
-
-
-    <!-- ======= Menu Section ======= -->
-    <!-- <section id="menu" class="menu">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Check our <span>Menu</span></h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="menu-flters">
-              <li data-filter="*" class="filter-active">Show All</li>
-              <li data-filter=".filter-Boys">Boys</li>
-              <li data-filter=".filter-Girls">Girls</li>
-
-            </ul>
-          </div>
-        </div>
-
-        <div class="row menu-container">
-
-          <div class="col-lg-6 menu-item filter-Boys">
-            <div class="menu-content">
-              <a href="#">Lobster Bisque</a><span>$5.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-
-
-          <div class="col-lg-6 menu-item filter-Boys">
-            <div class="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
-            </div>
-            <div class="menu-ingredients">
-              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-Girls">
-            <div class="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-
-
-          <div class="col-lg-6 menu-item filter-Boys">
-            <div class="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-Girls">
-            <div class="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach, crisp romaine, tomatoes, and Greek olives
-            </div>
-          </div>
-
-          <div class="col-lg-6 menu-item filter-Girls">
-            <div class="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
-            </div>
-            <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-            </div>
-          </div>
-
-
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Menu Section -->
-
-
     <!-- search bar -->
     <br>
     <br>
 
-
-
     <div class="section-title">
       <h2>Check our <span>Networks</span></h2>
       <p>Best hostels in kathmandu valley</p><br><br>
-      
+
 
       <div class="box">
         <form action="/search" method="get">
-          <div class=""> <input class="searchme" type="search" placeholder="Search for hostels"
-              name="query" id="query">
-              
-            <button class="book-a-table-btn scrollto" type="submit"><i class="fa fa-search icon-search"></i>Search</button>
+          <div class=""> <input class="searchme" type="search" placeholder="Search for hostels" name="query" id="query">
+
+            <button class="book-a-table-btn scrollto" type="submit"><i
+                class="fa fa-search icon-search"></i>Search</button>
           </div>
         </form>
-        <i class="fas fa-search"></i>
+
 
       </div>
-
-
-
 
       <!-- search bar end -->
 
@@ -629,61 +763,71 @@
 
 
 
-      <!-- hostel section -->
+      <!-- hostel section start -->
 
       {% if hostels %}
       <h3>{{word}}</h3>
       <br>
-      <!-- products data startttttttttttttttttttttttttttt -->
-      <div class="row">
-
+      <div class="container">
+        <!-- First product box start here-->
         {% for p in hostels %}
-        <!-- card1 -->
-        <div class="column">
-          <div class="container page-wrapper" style="width: 450px;">
-            <div class="page-inner">
-              <div class="row">
-                <div class="hostel-card">
-                  <div class="hostel-card-img">
-                    <img src="{% static p.hostel_image.url %}" alt="product pic">
+        <div class="prod-info-main prod-wrap clearfix">
+          <div class="row">
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <div class="product-image">
+                <img src="{% static p.images.url %}" alt="194x228" width="400px" height="300px"
+                  class="img-responsive rotprod">
+                <span class="tag2 sale">
+                  OFFER
+                </span>
+              </div>
+            </div>
+            <div class="col-md-7 col-sm-12 col-xs-12">
+              <div class="product-deatil">
+                <h5 class="name">
+                  <a href="#">
+                    {{p.name}} <span></span>
+                  </a>
+                </h5>
+                <p class="price-container">
+                  <span>{{p.price}}/Month</span>
+                </p>
+                <span class="tag1"></span>
+              </div>
+              <div class="description">
+                <p>{{p.description}} </p>
+              </div>
+              <div class="product-info smart-form">
+                <div class="row">
+                  <div class="col-md-12">
+                    <a href="/customerlogin" class="btn btn-danger btn-cart"><span>Book Now</span></a>
+                    <a href="/customerlogin" class="btn btn-info"><span>More info</span></a>
                   </div>
-                  <div class="hostel-card-info">
-                    <h3 class="hostel-card-title">{{p.name}}</h3>
-                    <p class="hostel-card-location">{{p.address}}</p>
-                    <p class="hostel-card-price">{{p.price}}</p>
-                    <a href="/customerlogin" class="hostel-card-btn">View More</a>
-                    <a href="/customerlogin" class="hostel-card-btn">Book Now</a>
+                  <div class="col-md-12">
+                    <div class="rating">Rating: {{p.rating}} /10.00
+
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- card1 end -->
-
+        <!-- end product -->
         {% if forloop.counter|divisibleby:"3" %}
-
       </div>
-
       <div class="row">
         <br><br><br><br><br><br><br><br><br><br>
 
         {% endif %}
         {% endfor %}
       </div>
-      <!-- hostel data enddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd -->
+
       {%else%}
       <h3 style="text-align:center; color:rgb(6, 6, 5);">No Searchs Found</h3>
       {%endif%}
 
-      <script>
-        {%if messages %}
-        {%for message in messages %}
-        alert('{{message}}');
-        {% endfor %}
-        {% endif %}
-      </script>
-      <br><br><br>
+      <!-- hostel display section end -->
 
 
 
@@ -694,9 +838,7 @@
 
 
 
-    
 
-      
 
       <!-- ======= Specials Section ======= -->
       <br><br><br><br>
@@ -1080,7 +1222,10 @@
         </div>
 
         <div class="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.5591412221734!2d85.30974986364124!3d27.700017532794938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1854946dc785%3A0x33dc60cc6e250316!2sSundhara%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1679991084999!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.5591412221734!2d85.30974986364124!3d27.700017532794938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1854946dc785%3A0x33dc60cc6e250316!2sSundhara%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1679991084999!5m2!1sen!2snp"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <div class="container mt-5">
@@ -1113,43 +1258,9 @@
             </div>
           </div>
 
-          <form method="POST" class="form-control" style="margin-top: 60px;"> {% csrf_token %}
-
-            <div class="row" style="margin-top: 20px;">
-              <div class="col-md-6 form-group">
-                <input type="text" class="form-control" name="name" id="name" placeholder="Your name" required>
-
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-              </div>
-            </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            </div>
-            <div class="my-3">
-              {% if messages %}
-              {% for message in messages %}
-              <div class="alert alert-dismissible alert-success">
-                <button type="button" class="close" data-dismiss="alert">
-                  *
-                </button>
-                <strong>{{message}}</strong>
-              </div>
-              {% endfor %}
-              {% endif %}
-
-
-            </div>
-
-
-            <div class="text-center"><button type="submit" class="book-a-table-btn scrollto" value="submit">Send
-                Message</button></div>
-          </form>
-
         </div>
       </section><!-- End Contact Section -->
-
+      <br><br><br><br><br><br><br><br><br><br>
   </main><!-- End #main -->
 
 
@@ -1205,9 +1316,48 @@
 
 
   </script>
+  <script>
+    const activePage = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a').forEach(link => {
+        if (link.href.includes(`${activePage}`)) {
+            link.classList.add('active');
+            console.log(link);
+        }
+    })
+
+</script>
 
 </body>
 
 {% endblock content %}
+
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+    crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+
+  </div>
+  </div>
+</body>
 
 </html>

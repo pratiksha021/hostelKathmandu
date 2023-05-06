@@ -1,45 +1,95 @@
-<!DOCTYPE html>
+<!-- mysite -->
+<!doctype html>
+{% extends 'ecom/homebase.html' %}
 {% load static %}
-<html lang="en" dir="ltr">
+{% block content %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en">
 
 
-  <title>Hostel kathmandu</title>
-  <style media="screen">
-    .jumbotron {
-      margin-bottom: 0px;
-    }
 
-    .jumbotron h1 {
-      text-align: center;
-    }
-  </style>
 
-</head>
 
-<body style="background-color: #B3E5FC;">
 
-  {% include "ecom/navbar.html" %}
-  <br><br>
-  <div class="jumbotron">
-    <h1 class="display-4">Your message sent successfully !</h1>
-    <p class="lead">We will respond to your feedback soon</p>
-    <hr class="my-4">
-    <p>Check other features of website !</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
-    </p>
+
+<body>
+  <div
+    style="height: 300px; text-align: center; background-image: url(/static/assets/img/slide/slide1.jpg);background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <h2 style="padding-top: 130px; color: white; text-decoration: underline;"><b>/Contact Us</b></h2>
   </div>
 
-  {% include "ecom/footer.html" %}
+
+
+
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2><span>Contact</span> Us</h2>
+        <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque
+          vitae
+          autem.</p>
+      </div>
+    </div>
+    <br><br>
+
+
+
+    <div class="container mt-5" style="margin-bottom: 10px;">
+
+      <div class="info-wrap">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 info">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Location:</h4>
+            <p>Basundhara<br>Kathmandu,535022</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+            <i class="bi bi-clock"></i>
+            <h4>Open Hours:</h4>
+            <p>Monday-Saturday:<br>10:00 AM - 5:00 PM</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>info@example.com<br>contact@example.com</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>+977 9860586664<br>+977 9860586664</p>
+          </div>
+        </div>
+      </div>
+      <div class="jumbotron">
+        <h1 class="display-4">Your message sent successfully !</h1>
+        <p class="lead">We will respond to your feedback soon</p>
+        <hr class="my-4">
+        <p>Check other features of website !</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+        </p>
+      </div>
+
+
+
+
+
+    </div>
+
+  </section>
+
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+
 </body>
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+
+{% endblock content %}
 
 </html>

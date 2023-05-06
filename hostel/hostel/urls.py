@@ -37,9 +37,16 @@ urlpatterns = [
     path('update-customer/<int:pk>', views.update_customer_view,name='update-customer'),
 
     path('admin-hostels', views.admin_Hostels_view,name='admin-hostels'),
+    path('hostel-images/<int:pk>', views.admin_Hostels_images_view,name='hostel-images'),
+
     path('admin-add-hostel', views.admin_add_Hostel_view,name='admin-add-hostel'),
     path('delete-hostel/<int:pk>', views.delete_Hostel_view,name='delete-hostel'),
     path('update-hostel/<int:pk>', views.update_Hostel_view,name='update-hostel'),
+
+    path('admin-room', views.admin_room_view,name='admin-room'),
+    path('admin-add-room', views.admin_add_room_view,name='admin-add-room'),
+    path('delete-room/<int:pk>', views.delete_room_view,name='delete-room'),
+    path('update-room/<int:pk>', views.update_room_view,name='update-room'),
 
     path('admin-view-booking', views.admin_view_booking_view,name='admin-view-booking'),
     path('delete-order/<int:pk>', views.delete_booking_view,name='delete-order'),
@@ -54,6 +61,7 @@ urlpatterns = [
     path('edit-profile', views.edit_profile_view,name='edit-profile'),
     path('download-invoice/<int:orderID>/<int:hostelID>', views.download_invoice_view,name='download-invoice'),
     path('hostel_detail/<id>', views.hostel_detail, name='hostel_detail'),
+    path('room_detail/<id>', views.room_detail, name='room_detail'),
 
     path('add-to-cart/<int:pk>', views.add_to_cart_view,name='add-to-cart'),
     path('cart', views.cart_view,name='cart'),

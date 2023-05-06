@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="layoutSidenav_content">
+  <main>
+    <div class="container-fluid px-4">
+      <h1 class="mt-4">Rooms</h1>
+      <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/admin-dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active">Rooms</li>
+      </ol>
+      <div class="card mb-4">
+        <div class="card-body">
+          DataTables is a third party plugin that is used to generate the demo table below. For more information about
+          DataTables, please visit the
+          <a target="_blank" href="#">official DataTables documentation</a>
+          .
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Rooms list
+        </div>
+        <div class="card-body">
+          <table id="datatablesSimple">
+            <thead>
+              <tr>
+                <th>Hostel Linked</th>
+                <th>Type Name</th>
+                <th>Occupancy</th>
+                <th>Room Type</th>
+                <th>Maximum Person</th>
+                <th>Available</th>
+                <th>Cost</th>
+                <th>Img1</th>
+                <th>Img2</th>
+                <th>Img3</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Hostel Linked</th>
+                <th>Type Name</th>
+                <th>Occupancy</th>
+                <th>Room Type</th>
+                <th>Maximum Person</th>
+                <th>Available</th>
+                <th>Cost</th>
+                <th>Img1</th>
+                <th>Img2</th>
+                <th>Img3</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </tfoot>
+            <tbody>
+
+              {% for h in room %}
+              {% if h %}
+
+              <tr>
+                <td> {{h.hostel}}</td>
+                <td>{{h.type_name}}</td>
+                <td>{{h.occupancy}}</td>
+                <td>{{h.room_type}}</td>
+                <td>{{h.maximum}}</td>
+                <td>{{h.available}}</td>
+                <td>{{h.cost}}</td>
+                <td> <img src="{% static h.img1.url %}" alt="hostel img" height="40px" width="40px" /></td>
+                <td> <img src="{% static h.img2.url %}" alt="hostel img" height="40px" width="40px" /></td>
+                <td> <img src="{% static h.img3.url %}" alt="hostel img" height="40px" width="40px" /></td>
+
+
+
+                <td><a class="btn btn-primary btn-xs" href="{% url 'update-room' h.id  %}"><span
+                      class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="{% url 'delete-room' h.id  %}"><span
+                      class="glyphicon glyphicon-trash"></span></a></td>
+
+              </tr>
+              
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+  <a href="/admin-add-room">
+    <i class="fa fa-plus my-float"></i>
+    Add Room
+  </a>
+  {% endblock content %}

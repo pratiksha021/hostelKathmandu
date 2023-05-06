@@ -7,134 +7,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>Hostel Kathmandu</title>
-<style media="screen">
-  .form-style-1 {
-  	margin:10px auto;
-  	max-width: 400px;
-  	padding: 20px 12px 10px 20px;
-  	font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  }
-  .form-style-1 li {
-  	padding: 0;
-  	display: block;
-  	list-style: none;
-  	margin: 10px 0 0 0;
-  }
-  .form-style-1 label{
-  	margin:0 0 3px 0;
-  	padding:0px;
-  	display:block;
-  	font-weight: bold;
-  }
-  .form-style-1 input[type=text],
-  .form-style-1 input[type=date],
-  .form-style-1 input[type=datetime],
-  .form-style-1 input[type=number],
-  .form-style-1 input[type=search],
-  .form-style-1 input[type=time],
-  .form-style-1 input[type=url],
-  .form-style-1 input[type=email],
-  textarea,
-  select{
-  	box-sizing: border-box;
-  	-webkit-box-sizing: border-box;
-  	-moz-box-sizing: border-box;
-  	border:1px solid #BEBEBE;
-  	padding: 7px;
-  	margin:0px;
-  	-webkit-transition: all 0.30s ease-in-out;
-  	-moz-transition: all 0.30s ease-in-out;
-  	-ms-transition: all 0.30s ease-in-out;
-  	-o-transition: all 0.30s ease-in-out;
-  	outline: none;
-  }
-  .form-style-1 input[type=text]:focus,
-  .form-style-1 input[type=date]:focus,
-  .form-style-1 input[type=datetime]:focus,
-  .form-style-1 input[type=number]:focus,
-  .form-style-1 input[type=search]:focus,
-  .form-style-1 input[type=time]:focus,
-  .form-style-1 input[type=url]:focus,
-  .form-style-1 input[type=email]:focus,
-  .form-style-1 textarea:focus,
-  .form-style-1 select:focus{
-  	-moz-box-shadow: 0 0 8px #88D5E9;
-  	-webkit-box-shadow: 0 0 8px #88D5E9;
-  	box-shadow: 0 0 8px #88D5E9;
-  	border: 1px solid #88D5E9;
-  }
-  .form-style-1 .field-divided{
-  	width: 49%;
-  }
+ 
+  <style>
+    .aboutus-head {
+      height: 00px;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      color: white;
+    }
 
-  .form-style-1 .field-long{
-  	width: 100%;
-  }
-  .form-style-1 .field-select{
-  	width: 100%;
-  }
-  .form-style-1 .field-textarea{
-  	height: 100px;
-  }
-  .form-style-1 input[type=submit], .form-style-1 input[type=button]{
-  	background: #4B99AD;
-  	padding: 8px 15px 8px 15px;
-  	border: none;
-  	color: #fff;
-  }
-  .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-  	background: #7e5654;
-  	box-shadow:none;
-  	-moz-box-shadow:none;
-  	-webkit-box-shadow:none;
-  }
-  .form-style-1 .required{
-  	color:red;
-  }
-</style>
+    .aboutus-head::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
 
+
+      /* Change the alpha value (last parameter) to adjust the darkness */
+
+      
+    }
+
+    .my-textarea {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        line-height: 1.5;
+        
+      }
+  </style>
 </head>
 
-<body style="background-color: #7e5654;">
+<body>
 
   {%if request.user.is_authenticated%}
-    {% include "ecom/customer_navbar.html" %}
+  {% include "ecom/customer_navbar.html" %}
   {%else%}
-    {% include "ecom/navbar.html" %}
+  {% include "ecom/navbar.html" %}
   {%endif%}
-
-  <center>
-    <h3 style="height: 50px; margin-top: 45px;">Send Us Your Valuable Feedback !</h3>
-
-
-    <form method="post">
-      {% csrf_token %}
-    <ul class="form-style-1">
-        <li>
-            <label>Name <span class="required">*</span></label>
-            {% render_field feedbackForm.name class="field-long"  %}
-
-        </li>
-
-        <li>
-            <label>Your Feedback <span class="required">*</span></label>
-            {% render_field feedbackForm.feedback id="field5" class="field-long field-textarea"  %}
-
-        </li>
-        <li>
-            <input  class="book-a-table-btn scrollto" style="background-color: #ffb03b;" type="submit" value="Send Feedback" />
-        </li>
-    </ul>
-    </form>
+  <div class="aboutus-head"
+    style="height: 300px; text-align: center; background-image: url(/static/assets/img/breadcrump/sendfeedback.jpg);background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <h2 style="padding-top: 130px; color: white; text-decoration: underline;"><b>/Send Feedback</b></h2>
+  </div>
+  
 
 
-  </center>
+
+
+  <div class="content">
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          
+
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              
+              <h3 class="heading mb-4" style="margin-top: 30px;">Let's talk about everything!</h3>
+              <p>Send us your valuable feedback.</p>
+
+              <p><img src="{% static '/assets/img/breadcrump/svg.svg' %}" alt="Img" class="img-fluid"></p>
+
+
+            </div>
+            <div class="col-md-6" style="margin-top: 60px;">
+              <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    {% render_field feedbackForm.name type="text" class="form-control" name="name" id="name" placeholder="Your name"%}                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    {% render_field feedbackForm.feedback class="my-textarea" name="message" id="message" cols="300" rows="7" placeholder="Write your feedback"  %}
+                    
+
+                  </div>
+                </div>  
+                <div class="row">
+                  <div class="col-12">
+                    <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4" style="background-color: #E8C52C;">
+                  <span class="submitting"></span>
+                  </div>
+                </div>
+              </form>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+
+
+
+
   {% include "ecom/footer.html" %}
 </body>
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+<script src="{% static 'assets/js/main.js' %}"></script>
 
 </html>

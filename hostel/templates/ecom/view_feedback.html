@@ -9,7 +9,7 @@
       margin-left: 25%;
       margin-right: 25%;
       padding: 20px;
-      background-color: #f44336;
+      background-color: #bd7877;
       color: white;
     }
 
@@ -35,13 +35,10 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
-<!--
-written By : sumit kumar
-facebook : fb.com/sumit.luv
--->
+<div id="layoutSidenav_content">
+  <main>
 
-<br><br><br><br>
-<h2 style="text-align:center; color:blue;">Feedbacks By User</h2>
+<h2 style="text-align:center; color:rgb(5, 5, 5);">Feedbacks By User</h2>
 <hr>
 {%for f in feedbacks%}
 <div class="alert">
@@ -49,9 +46,6 @@ facebook : fb.com/sumit.luv
   <strong>{{f.date}} ||By : {{f.name}} </strong><br> {{f.feedback}}
 </div>
 {%endfor%}
-<!--
-developed By : sumit kumar
-facebook : fb.com/sumit.luv
-youtube : youtube.com/lazycoders
--->
+</main>
+
 {% endblock content %}

@@ -1,4 +1,3 @@
-
 {% load static %}
 {% block content %}
 <br><br><br><br><br><br>
@@ -9,64 +8,84 @@
 <html>
 
 <head>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"
+        integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
     <title>Logout Successful</title>
 
     <style>
-        body{
-            background-color: #ffffff;
-        }
+        
+
+
+
         .container {
-            padding: 30px;
-            padding-top: 5px;
-            margin: 0 auto;
-            max-width: 500px;
-            text-align: center;
-            background-color: #553e3e;
-            border-radius: 20px;
-            
-            
+            white-space: nowrap;
+            /* prevent wrapping to the next line */
         }
 
-        h1 {
-            margin-top: 50px;
-        }
-
-        p {
-            margin-top: 30px;
-            font-size: 1.2em;
-        }
-
-        a {
-            display: block;
-            margin-top: 30px;
-            color: #4CAF50;
-            font-size: 1.2em;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+        .left,
+        .right {
+            display: inline-block;
+            vertical-align: top;
+            /* align the top edges of the divs */
+            width: 50%;
+            /* each div takes up 50% of the container width */
+            box-sizing: border-box;
+            /* include padding and border in the width */
+            padding: 10px;
+            /* add some padding to the divs */
         }
     </style>
+
 </head>
 
 <body>
-    <div class="container">
-        <h1>Logout Successful</h1>
-        <p>You have been successfully logged out.</p>
-        <div style="margin-bottom: 0px;">
-            <a href="/customerlogin">Click here to log in again.</a>
-        <h3>Or</h3>
-        <a href="/">Go to homePage</a>
-        </div>
-        
+  
 
+
+
+
+    <div class="container">
+        <div class="left">
+            <img src="{% static '/assets/img/breadcrump/svg.svg' %}" alt="Img" class="img-fluid" width="400px" height="400px">
+
+        </div>
+        <div class="right">
+            <div class="row" style="display: contents;">
+
+                <i class="fa fa-power-off fa-5x" aria-hidden="true"></i><br>
+            </div>
+                <h1>Ohh No! You are leaving...</h1>
+                <p>Are you sure?</p>
+                <div class="row-col-md-6">
+                    <button class="btn btn-sm"><a href="/customerlogin">Naah, Just
+                            Kidding</a></button>
+                    <button class="btn btn-sm"><a href="/">Yes, Log me out</a></button>
+
+                </div>
+
+            
+        </div>
     </div>
+
+
+
 </body>
 
 </html>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
 {% endblock content %}

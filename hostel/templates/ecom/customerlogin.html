@@ -1,171 +1,92 @@
 <!DOCTYPE html>
+{% load static %}
 {% load widget_tweaks %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Hostel Kathmandu</title>
-    <style media="screen">
-      body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: linear-gradient(to right, #7e5654, #7e5654)
-}
+<html lang="en">
 
-.box {
-    width: 500px;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #333333;
-    ;
-    text-align: center;
-    transition: 0.25s;
-    margin-top: 100px;
-    border-radius: 25px;
-    opacity: 0.9;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
-.box input[type="text"],
-.box input[type="password"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #1565c0;
-    padding: 10px 10px;
-    width: 250px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s
-}
 
-.box h1 {
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500
-}
-
-.box input[type="text"]:focus,
-.box input[type="password"]:focus {
-    width: 300px;
-    border-color: #2ecc71
-}
-
-.box input[type="submit"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2ecc71;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer
-}
-
-.box input[type="submit"]:hover {
-    background: #2ecc71
-}
-
-.forgot {
-    text-decoration: underline
-}
-
-ul.social-network {
-    list-style: none;
-    display: inline;
-    margin-left: 0 !important;
-    padding: 0
-}
-
-ul.social-network li {
-    display: inline;
-    margin: 0 5px
-}
-
-.social-network a.icoFacebook:hover {
-    background-color: #3B5998
-}
-
-.social-network a.icoTwitter:hover {
-    background-color: #33ccff
-}
-
-.social-network a.icoGoogle:hover {
-    background-color: #BD3518
-}
-
-.social-network a.icoFacebook:hover i,
-.social-network a.icoTwitter:hover i,
-.social-network a.icoGoogle:hover i {
-    color: #fff
-}
-
-a.socialIcon:hover,
-.socialHoverClass {
-    color: #171819
-}
-
-.social-circle li a {
-    display: inline-block;
-    position: relative;
-    margin: 0 auto 0 auto;
-    border-radius: 50%;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    font-size: 20px
-}
-
-.social-circle li i {
-    margin: 0;
-    line-height: 50px;
-    text-align: center
-}
-
-.social-circle li a:hover i,
-.triggeredHover {
-    transform: rotate(360deg);
-    transition: all 0.2s
-}
-
-.social-circle i {
-    color: #fff;
-    transition: all 0.8s;
-    transition: all 0.8s
-}
+    <style>
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
     </style>
-  </head>
-  <body>
-    {% include "ecom/navbar.html" %}
-    <br><br>
-    <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <form class="box" method="post">
-                  {% csrf_token %}
-                    <h1>Login</h1>
-                    <p class="text-muted"> Please enter your login and password!</p>
-                               {% render_field form.username class="form-control" placeholder="Username" %}
-                               {% render_field form.password class="form-control" placeholder="Password" %}
-                     <input type="submit" name="" value="Login" >
+</head>
 
-                </form>
+<body>
+
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+                <div class="col-md-8 col-lg-7 col-xl-6 border-top">
+                    <img src="{% static '/assets/img/breadcrump/login.svg' %}" alt="Img" class="img-fluid" width="200px" height="200px">
+
+                    <h1>Hi Travellers!</h1>
+                    <p>See who else is staying in your hostel and let others know you are staying too. Get to know the names and ages of your
+                         fellow travellers and message to say hello before you go. Meet other travellers by joining or organising events to explore together.<br><br>
+                        Sign up to agree to the use of your information. To learn more, visit our social terms of service and privacy policy pages.</p>
+                        <a class="btn btn-primary btn-sm btn-block" style="background-color: #3b5998" href="#!"
+                            role="button">
+                            <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
+                        </a>
+                        <a class="btn btn-primary btn-sm btn-block" style="background-color: #55acee" href="#!"
+                            role="button">
+                            <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
+                </div>
+                
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1" style="border-radius: 1px solid; border-color: rgb(213, 186, 10);">
+                    <h1>Login</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            {% render_field form.username class="form-control form-control-lg" id="form1Example13" type="username" placeholder="Username" %}
+                            <label class="form-label" for="form1Example13">Username</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            {% render_field form.password class="form-control form-control-lg" id="form1Example13" type="password" placeholder="Password" %}
+                            <label class="form-label" for="form1Example23">Password</label>
+                        </div>
+
+                        <div class="d-flex justify-content-around align-items-center mb-4">
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                                <label class="form-check-label" for="form1Example3"> Remember me </label>
+                            </div>
+                            <a href="#!">Forgot password?</a>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-warning btn-lg btn-block" value="Login">Sign in</button>
+
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                        </div>
+
+                        
+
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
-{% include "ecom/footer.html" %}
-  </body>
+    </section>
+
+
+</body>
+
+
 </html>

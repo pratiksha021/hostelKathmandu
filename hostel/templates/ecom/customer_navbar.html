@@ -30,6 +30,12 @@
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <style>
+        nav ul li a:is(:link, :active, :visited) {
+            
+            color: #ffffff;
+        }
+    </style>
 
     <!-- ======= Top Bar ======= -->
     <section id="topbar" class="d-flex align-items-center fixed-top topbar-transparent">
@@ -55,26 +61,38 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/">Home</a></li>
                     <li><a class="nav-link scrollto" href="/aboutus">About Us</a></li>
                     <li><a class="nav-link scrollto" href="/contactus">Contact Us</a></li>
                     <li><a class="nav-link scrollto" href="/send-feedback">Send Feedback</a></li>
-                    <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
 
                     <li class="dropdown"><a href="#"><span>See More</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="/logout">Logout</a></li>
                             <li><a href="/my-profile">Profile</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
 
                         </ul>
                     </li>
-                    
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
 
         </div>
-   </header>
-</body>
+    </header>
 
+
+
+</body>
+<script>
+    const activePage = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a').forEach(link => {
+        if (link.href.includes(`${activePage}`)) {
+            link.classList.add('active');
+            console.log(link);
+        }
+    })
+
+</script>

@@ -1,43 +1,303 @@
+<!-- mysite -->
+<!doctype html>
+{% extends 'ecom/homebase.html' %}
 {% load static %}
+{% block content %}
 
-<style>
-    .container {
-        margin-top: 20px;
-    }
+<html lang="en">
 
-    img {
-        max-height: 400px;
-    }
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    h1 {
-        margin-top: 0;
-    }
+    <style>
+        .aboutus-head {
+            height: 00px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: white;
+        }
 
-    p {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-</style>
+        .aboutus-head::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
 
-<div class="row">
 
-    
+            /* Change the alpha value (last parameter) to adjust the darkness */
+        }
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="{% static hostel.hostel_image.url %}" alt="{{ hostel.name }}" class="img-fluid">
-            </div>
-            <div class="col-md-6">
-                <h1>{{ hostel.name }}</h1>
-                <p>{{ hostel.description }}</p>
-                <p>Address: {{ hostel.address }}</p>
-                <p>Price: {{ hostel.price }} / months</p>
-                <button class="btn btn-primary" id="book-now">Book Now</button>
+
+
+
+
+
+
+        .product {
+            width: 100%;
+            height: 100vh;
+
+        }
+
+        .product__images {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .product__main-image {
+            max-width: 500px;
+            max-height: 600px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #070707;
+
+        }
+
+        .product__slider-wrap {
+            max-width: 500px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product__slider {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .product__image {
+            max-width: 180px;
+            max-height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.5;
+            margin: 0.25rem;
+            border: 1px solid #070707;
+        }
+
+        .product__image:first-child {
+            margin-left: 0;
+        }
+
+        .product__image:last-child {
+            margin-right: 0;
+        }
+
+        .product__image:hover {
+            opacity: 1;
+        }
+
+        .product__image--active {
+            opacity: 1;
+        }
+
+        .product__slider::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .product__slider::-webkit-scrollbar-thumb {
+            background-color: #f9564f;
+            border-radius: 50px;
+        }
+
+        li {
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .desc {
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(94, 93, 93, 0.5);
+
+        }
+
+        .type {
+            display: flex;
+            gap: 40px;
+            align-content: center;
+        }
+
+        .room-type {
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(94, 93, 93, 0.5);
+            width: 400px;
+            height: 400px;
+            transition: transform 1.2 ease-in-out;
+
+
+        }
+
+        .room-type:hover {
+            transform: scale(1.2);
+
+        }
+
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="aboutus-head"
+        style="height: 300px; text-align: center; background-image: url(/static/assets/img/breadcrump/friends.jpg);background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <h2 style="padding-top: 130px; color: white; text-decoration: underline;"><b>/Hostel Details</b></h2>
+    </div>
+
+
+    <div class="content">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="product">
+                                <div class="product__images">
+                                    <img src="{% static hostel.images.url %}" alt="google pixel 6"
+                                        class="product__main-image" id="main-image" />
+                                    <div class="product__slider-wrap">
+                                        <div class="product__slider">
+                                            <img src="{% static hostel.images.url %}" alt="google pixel 6"
+                                                class="product__image product__image--active" />
+                                            <img src="{% static hostel.images2.url %}" alt="google pixel 6"
+                                                class="product__image" />
+                                            <img src="{% static hostel.images3.url %}" alt="google pixel 6"
+                                                class="product__image" />
+                                            <img src="{% static hostel.images4.url %}" alt="google pixel 6"
+                                                class="product__image" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6" style="margin-top: 100px; padding-left: 50px;">
+
+                            <h2>{{ hostel.name }}</h2>
+                            <p><i class="fa fa-map-marker"></i> Location: {{ hostel.location }}</p>
+                            <p><i class="fa fa-address-book"></i> Address: {{ hostel.address }}</p>
+                            <p><i class="fa fa-phone"></i> Phone Number: {{hostel.contact}}</p>
+                            <p><i class="fa fa-envelope"></i> Email: {{hostel.email}}</p>
+
+                            <h3>Amenities</h3>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <li><i class="fa fa-wifi"></i> Wifi : {{hostel.wifi_choice}}</li>
+                                    <li><i class="fa fa-cutlery"></i> Kitchen: {{hostel.canteen_choice}}</li>
+                                    <li><i class="fa fa-map-marker"></i> Parking: {{hostel.parking_choice}}</li>
+                                    <li><i class="fa fa-shower"></i> Hot shower: {{hostel.hotwater_choice}}</li>
+
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <li><i class="fa fa-desktop"></i> 24-hour front desk</li>
+                                    <li><i class="fa fa-child"></i> Daily housekeeping</li>
+                                    <li><i class="fa fa-exchange"></i> Laundry facilities</li>
+                                    <li><i class="fa fa-desktop"></i> Common room/TV</li>
+                                    <li><i class="fa fa-lock"></i> Lockers</li>
+                                </div>
+                            </div>
+                            <a href="/room_detail/{{hostel.id}}" class="hostel-card-btn"><button>View Rooms</button></a>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <h2>Description</h2>
+                    {{hostel.description}}
+                    <h5 style="padding: 10px; color: #f9564f;">Price Per Month: {{hostel.price}}</h5>
+                </div>
+                <div>
+                    ratings:
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+                <h4>Room Types:</h4>
+                <div class="type">
+
+                    <div class="room-type">
+
+                        <div class="card-body">
+                            <h5 class="card-title">Single Room</h5>
+                            <p class="card-text">Size: 20 square meters</p>
+                            <p class="card-text">Bed: 1 queen-sized bed</p>
+                            <p class="card-text">Maximum occupancy: 1 person</p>
+                            <p class="card-text">Amenities: Free Wi-Fi, flat-screen TV, air conditioning, desk, private
+                                bathroom with shower, hairdryer, and free toiletries.</p>
+                        </div>
+                    </div>
+                    <div class="room-type">
+                        <div class="card-body">
+                            <h5 class="card-title">Double Room</h5>
+                            <p class="card-text">Size: 30 square meters</p>
+                            <p class="card-text">Bed: 1 king-sized bed or 2 twin beds</p>
+                            <p class="card-text">Maximum occupancy: 2 persons</p>
+                            <p class="card-text">Amenities: Free Wi-Fi, flat-screen TV, air conditioning, desk, private
+                                bathroom with shower, hairdryer, and free toiletries.</p>
+                        </div>
+                    </div>
+                    <div class="room-type">
+                        <div class="card-body">
+                            <h5 class="card-title">Deluxe Room</h5>
+                            <p class="card-text">Size: 30 square meters</p>
+                            <p class="card-text">Bed: 1 king-sized bed or 2 twin beds</p>
+                            <p class="card-text">Maximum occupancy: 2 persons</p>
+                            <p class="card-text">Amenities: Free Wi-Fi, flat-screen TV, air conditioning, desk, private
+                                bathroom with shower, hairdryer, and free toiletries.</p>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
+
+
     </div>
+
     
+   
+    <br><br><br><br>
+
+
+
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
 
     <script>
         document.getElementById("book-now").addEventListener("click", function () {
@@ -45,3 +305,36 @@
             window.location.href = "/book/{{ hostel.id }}";
         });
     </script>
+
+    </div>
+
+
+
+
+
+    <body>
+
+        <script>
+            const mainImage = document.getElementById("main-image");
+            const images = document.querySelectorAll(".product__image");
+
+            images.forEach((image) => {
+                image.addEventListener("click", (event) => {
+                    mainImage.src = event.target.src;
+
+                    document
+                        .querySelector(".product__image--active")
+                        .classList.remove("product__image--active");
+
+                    event.target.classList.add("product__image--active");
+                });
+            });
+        </script>
+    </body>
+
+</html>
+
+
+
+</body>
+{% endblock content %}

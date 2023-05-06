@@ -1,180 +1,164 @@
 <!DOCTYPE html>
+{% load static %}
 {% load widget_tweaks %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
 
 
 
+</head>
 
-    <style media="screen">
-      body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: linear-gradient(to right, #7e5654, #7e5654)
-}
+<body>
 
-.box {
-    width: 500px;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #191919;
-    ;
-    text-align: center;
-    transition: 0.25s;
-    margin-top: 100px
-}
+  <!-- Section: Design Block -->
+  <section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <img src="{% static '/assets/img/breadcrump/register.svg' %}" alt="Img" class="img-fluid" width="200px"
+              height="200px">
 
-.box input[type="text"],
-.box input[type="password"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #3498db;
-    padding: 10px 10px;
-    width: 250px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s
-}
+            <h1 class="my-5 display-3 fw-bold ls-tight">
+              The best offer <br />
+              <span class="text-warning">for your future!</span>
+            </h1>
+            <p style="color: hsl(217, 10%, 50.8%)">
+              Create an account to access exclusive features and content on our website. It's free and only takes a few
+              minutes!<br><br>
 
-.box h1 {
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500
-}
+              To get started, please fill out the registration form below with your name, email address, and a secure
+              password. We value your privacy and will never share your personal information with third parties. Please
+              read our privacy policy for more information.
+            </p>
+          </div>
 
-.box input[type="text"]:focus,
-.box input[type="password"]:focus {
-    width: 300px;
-    border-color: #2ecc71
-}
-
-.box input[type="submit"] {
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #2ecc71;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer
-}
-
-.box input[type="submit"]:hover {
-    background: #2ecc71
-}
-
-.forgot {
-    text-decoration: underline
-}
-
-ul.social-network {
-    list-style: none;
-    display: inline;
-    margin-left: 0 !important;
-    padding: 0
-}
-
-ul.social-network li {
-    display: inline;
-    margin: 0 5px
-}
-
-.social-network a.icoFacebook:hover {
-    background-color: #3B5998
-}
-
-.social-network a.icoTwitter:hover {
-    background-color: #33ccff
-}
-
-.social-network a.icoGoogle:hover {
-    background-color: #BD3518
-}
-
-.social-network a.icoFacebook:hover i,
-.social-network a.icoTwitter:hover i,
-.social-network a.icoGoogle:hover i {
-    color: #fff
-}
-
-a.socialIcon:hover,
-.socialHoverClass {
-    color: #44BCDD
-}
-
-.social-circle li a {
-    display: inline-block;
-    position: relative;
-    margin: 0 auto 0 auto;
-    border-radius: 50%;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    font-size: 20px
-}
-
-.social-circle li i {
-    margin: 0;
-    line-height: 50px;
-    text-align: center
-}
-
-.social-circle li a:hover i,
-.triggeredHover {
-    transform: rotate(360deg);
-    transition: all 0.2s
-}
-
-.social-circle i {
-    color: #fff;
-    transition: all 0.8s;
-    transition: all 0.8s
-}
-    </style>
-  </head>
-  <body>
-    {% include "ecom/navbar.html" %}
-    <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+          <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="card">
-                <form class="box" method="post" enctype="multipart/form-data">
+              <div class="card-body py-5 px-md-5">
+                <form method="post" enctype="multipart/form-data">
                   {% csrf_token %}
-                    <h1>CUSTOMER SIGNUP</h1>
-                    <p class="text-muted"> Please enter your details to create account !</p>
-                      {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
-                        {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
-                          {% render_field userForm.username class="form-control" placeholder="Username" %}
-                            {% render_field userForm.password class="form-control" placeholder="Password" %}
-                              {% render_field customerForm.address class="form-control" placeholder="Address" %}
-                                {% render_field customerForm.mobile class="form-control" placeholder="Mobile" %}
-                                  {% render_field customerForm.profile_pic class="form-control" placeholder="Profile pic" %}
-                  
-                     <input type="submit" name="" value="Create">
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        {% render_field userForm.first_name type="text" id="form3Example1" class="form-control" %}
+                        <label class="form-label" for="form3Example1">First name</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        {% render_field userForm.last_name type="text" id="form3Example2" class="form-control" %}
+                        <label class="form-label" for="form3Example2">Last name</label>
+                      </div>
+                    </div>
+                  </div>
 
+                  <!-- Username input -->
+                  <div class="form-outline mb-4">
+                    {% render_field userForm.username type="username" id="form3Example3" class="form-control" %}
+                    <label class="form-label" for="form3Example3">Username</label>
+                  </div>
+
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    {% render_field customerForm.email type="email" id="form3Example3" class="form-control" %}
+                    <label class="form-label" for="form3Example3">Email</label>
+                  </div>
+
+                  <!-- Address input -->
+                  <div class="form-outline mb-4">
+                    {% render_field customerForm.address type="address" id="form3Example3" class="form-control" %}
+                    <label class="form-label" for="form3Example3">Address</label>
+                  </div>
+
+                  <!-- Contact input -->
+                  <div class="form-outline mb-4">
+                    {% render_field customerForm.mobile type="phone" id="form3Example3" class="form-control" %}
+                    <label class="form-label" for="form3Example3">Contact</label>
+                  </div>
+
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        {% render_field customerForm.dob type="Date" id="form3Example1" class="form-control" %}
+                        <label class="form-label" for="form3Example1">Date of Birth</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        {% render_field customerForm.gender type="text" id="form3Example2" class="form-control" %}
+                        <label class="form-label" for="form3Example2">Gender</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    {% render_field userForm.password type="password" id="form3Example4" class="form-control" %}
+                    <label class="form-label" for="form3Example4">Password</label>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    {% render_field customerForm.profile_pic class="form-control" %}
+                    <label class="form-label" for="form3Example4">Image</label>
+                  </div>
+
+                  <!-- Checkbox -->
+                  <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                    <label class="form-check-label" for="form2Example33">
+                      Subscribe to our newsletter
+                    </label>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-warning btn-block mb-4" value="Create">
+                    Sign up
+                  </button>
+
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>or sign up with:</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-github"></i>
+                    </button>
+                  </div>
                 </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br>
-{% include "ecom/footer.html" %}
-  </body>
-</html>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+
+</body>

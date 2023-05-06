@@ -58,59 +58,99 @@
       <div class="form-content">
         <div class="row">
           <div class="col-md-6">
-            
+
             <div class="form-group">
+              <label>Hostel Name</label>
               {% render_field HostelForm.name class="form-control" placeholder="Hostel Name" %}
             </div>
             <div class="form-group">
+              <label>Address</label>
               {% render_field HostelForm.address class="form-control" placeholder="address" %}
             </div>
           </div>
           <div class="col-md-6">
+
             <div class="form-group">
-              {% render_field HostelForm.hostel_image class="form-control" placeholder="hostel_image" %}
-            </div>
-            
-            <div class="form-group">
+              <label>Description</label>
               {% render_field HostelForm.description class="form-control" placeholder="description" %}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label>Price</label>
               {% render_field HostelForm.price class="form-control" placeholder="Price" %}
             </div>
             <div class="form-group">
-              {% render_field HostelForm.capacity class="form-control" placeholder="capacity" %}
+              <label>Location</label>
+              {% render_field HostelForm.location class="form-control" placeholder="location" %}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <label>Rating Star</label>
               {% render_field HostelForm.rating class="form-control" placeholder="rating" %}
             </div>
-            <!-- <div class="form-group">
-              {% render_field HostelForm.owner class="form-control" placeholder="ownername" %}
-            </div> -->
-            
+
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field HostelForm.has_wifi class="form-control" placeholder="has_wifi" %}
+              <label>Contact</label>
+              {% render_field HostelForm.contact class="form-control" placeholder="Contact" %}
             </div>
             <div class="form-group">
-              {% render_field HostelForm.has_kitchen class="form-control" placeholder="has_kitchen" %}
+              <label>Email</label>
+              {% render_field HostelForm.email class="form-control" placeholder="Email" %}
             </div>
             <div class="form-group">
-              {% render_field HostelForm.has_lounge class="form-control" placeholder="has_lounge" %}
+              <label>Num rating</label>
+              {% render_field HostelForm.num_rating class="form-control" placeholder="num rating" %}
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              {% render_field HostelForm.has_parking class="form-control" placeholder="has_parking" %}
+              <label>Upload Hostel Front Image</label>
+              {% render_field HostelForm.images class="form-control" %}
             </div>
-            
+            <div class="form-group">
+              <label>Upload Hostel Kitchen Image</label>
+              {% render_field HostelForm.images2 class="form-control" %}
+            </div>
+            <div class="form-group">
+              <label>Upload Hostel Reading Space Image</label>
+              {% render_field HostelForm.images3 class="form-control" %}
+            </div>
+            <div class="form-group">
+              <label>Upload Hostel Front Image</label>
+              {% render_field HostelForm.images4 class="form-control" %}
+            </div>
+           
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Wifi Choice:</label>
+              {% render_field HostelForm.wifi_choice class="form-control" %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Canteen Choice:</label>
+              {% render_field HostelForm.canteen_choice class="form-control" %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Parking Choice:</label>
+              {% render_field HostelForm.parking_choice class="form-control" %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Hotwater Choice:</label>
+              {% render_field HostelForm.hotwater_choice class="form-control" %}
+            </div>
           </div>
 
-        </div>
+        
         </div>
         <button type="submit" class="btnSubmit">Update</button>
       </div>
